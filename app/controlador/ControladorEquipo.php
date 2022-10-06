@@ -40,8 +40,10 @@
             $this->vista->mostrarEquiposGrupo($equiposGrupo);
         }
 
+        
         public function agregarEquipo(){
-            if(verificarDatosNuevoEquipo()){
+            //if(verificarDatosNuevoEquipo()){
+                var_dump($_POST);
                 $equipo = array(
                     ":pp" => $_POST["pp"],
                     ":puntos" => $_POST["puntos"],
@@ -55,14 +57,15 @@
                     ":gf" => $_POST["gf"],
                 );
                 $this->modelo->agregarEquipo($equipo);
+                //}
             }
-        }
 
-        public function pedirEquipo(){
+            public function pedirEquipo(){
             $this->vista->formularioNuevoEquipo();
         }
-
-        private function verificarDatosNuevoEquipo(){
+    }
+        
+    function verificarDatosNuevoEquipo(){
             return (
                 isset($_POST["pp"]) and !empty($_POST["pp"]) and is_numeric($_POST["pp"]) and
                 isset($_POST["puntos"]) and !empty($_POST["puntos"]) and is_numeric($_POST["puntos"]) and
@@ -76,4 +79,3 @@
                 isset($_POST["pais"]) and !empty($_POST["pais"])
             );
         }
-    }

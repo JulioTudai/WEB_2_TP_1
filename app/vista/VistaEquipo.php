@@ -29,4 +29,8 @@
         public function mostrarEquiposGrupo($equipos){
             var_dump($equipos);
         }
+
+        public function formularioNuevoEquipo(){
+            require_once "./templates/formEquipo.php";
+        }
     }
