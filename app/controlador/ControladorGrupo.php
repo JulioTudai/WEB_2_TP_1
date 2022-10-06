@@ -11,4 +11,9 @@
             $this->modelo = new ModeloGrupo();
             $this->vista = new VistaGrupo();
         }
+
+        public function listaGrupos(){
+            $grupos = $this->modelo->obtenerGrupo();
+            $this->vista->mostrarGrupos($grupos);
+        }
     }
