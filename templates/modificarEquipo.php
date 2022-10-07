@@ -1,7 +1,11 @@
+
 <head>
     <base href="<?php echo BASE_URL ?>">
 </head>
 <form method="post">
+        <label> id equipo</label>
+        <input type="number" name="id_equipo">
+
         <label for="pais">Pais</label>
         <input type="text" name="pais" id="pais">
 

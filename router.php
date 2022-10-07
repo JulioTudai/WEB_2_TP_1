@@ -14,36 +14,97 @@ if(!empty($_GET["action"])){
 
 $params = explode("/" , $action);
 
+
 $controladorEquipo = new ControladorEquipo();
 $controladorGrupo = new ControladorGrupo();
-
+var_dump($_GET);
+echo"dsadsa"."</br>";
 switch($params[0]){
-    case "equipos":{
+    case "equipos":{        
+        if(isset($params[1]) and !empty($params[1])){         
+            switch($params[1]){
+                case"agregar":{
+                    $controladorEquipo->pedirEquipo();
+                    if(!empty($_POST)){
+                        $controladorEquipo->agregarEquipo();
+                    }
+                    break;
+                }  
+                case "modificar":{
+                     $controladorEquipo->mostrarEquipoModificar($params[1]);
+                    if(!empty($_POST)){
+                        $controladorEquipo->modificarEquipo();
+                    }
+                    break;
+                }
+                case "eliminar":{
+                    $controladorEquipo->eliminarEquipoController($params[2]); 
+                    break;
+                }
+                default:{
+                    $controladorEquipo->equipo($params[1]);
+                }
+            }
 
-        if(isset($params[1]) and !empty($params[1])){
-            if ($params[1] == "agregar"){
+            /*if ($params[1] == "agregar"){
                 $controladorEquipo->pedirEquipo();
                 if(!empty($_POST)){
                     $controladorEquipo->agregarEquipo();
                 }
+            }else if($params[1]=="eliminar"){
+                $controladorEquipo->eliminarEquipoController($params[2]); 
+            }
+            else if($params[1]=="modificar"){
+                $controladorEquipo->mostrarEquipoModificar($params[1]);
+                if(!empty($_POST)){
+                    $controladorEquipo->modificarEquipo();
+                }  
             }else{
                 $controladorEquipo->equipo($params[1]);
-            }
-
+            }*/
         }else{
-            if(isset($_GET["grupo"])){
+            if(isset($_GET["grupo"])){ 
                 $controladorEquipo->equiposDeGrupo($_GET["grupo"]);
+                
             }else{
                 $controladorEquipo->listaEquipos();
+                
             }
         }
         break;
+
     }
-
+    
     case "grupos":{
-
-        $controladorGrupo->listaGrupos();
-
+        if(isset($params[1]) and !empty($params[1])){         
+            switch($params[1]){
+                case"agregar":{
+                    $controladorGrupo->pedirGrupo();
+                    if(!empty($_POST)){
+                        echo"asdasdas";
+                        $controladorGrupo->agregarGrupo();
+                    }
+                    break;
+                }  
+                case "modificar":{
+                     $controladorGrupo->mostrarGrupoModificar();
+                    if(!empty($_POST)){
+                        $controladorGrupo->modificarGrupo();
+                    }
+                    break;
+                }
+                case "eliminar":{
+                    $controladorGrupo->eliminarGrupoController(isset($params[2]) ? $params[2] : null); 
+                    break;
+                }
+                default:{
+                    echo"llego al default";
+                }
+            }
+        }
+        else{ 
+             $controladorGrupo->listaGrupos();
+        }
         break;
     }
     case "home":{
@@ -51,7 +112,6 @@ switch($params[0]){
         break;    
     }
     default:{
-        $controladorEquipo->agregarEquipo();
         echo "No se encontro la pagina";
     } 
 }

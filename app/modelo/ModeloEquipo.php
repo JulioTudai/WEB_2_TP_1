@@ -31,11 +31,14 @@
             $sentencia->execute($equipo);
         }
 
-        public function modificarEquipo(){
-
+        public function modificarEquipo($equipo){
+           $sentencia =$this->db->prepare("UPDATE equipos SET pais=:pais,puntos=:puntos,pj=:pj,pg=:pg,pe=:pe,pp=:pp,gf=:gf,gc=:gc,dif=:dif,fk_id_grupo=:fk_id_grupo WHERE id_equipo=:id_equipo");
+            $sentencia->execute($equipo);
         }
 
-        public function eliminarEquipo(){
-
+        public function eliminarEquipo($id){
+            $equipoEliminado=$this->db->prepare("DELETE FROM equipos WHERE id_equipo=?");
+            $equipoEliminado->execute([$id]);
+            return $equipoEliminado->rowCount();
         }
     }

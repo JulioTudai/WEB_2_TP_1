@@ -1,5 +1,5 @@
 <?php
-
+    
     require_once "./libs/smarty/Smarty.class.php";
 
     class vistaEquipo{
@@ -22,12 +22,19 @@
             echo "no se ingreso un id valido";
         }
 
-        public function listarEquipos($equipos){
+        public function listarEquipos($equipos,$mostrarEquipos){
+            if(($mostrarEquipos=="modificar") and !$mostrarEquipos==null){
+                var_dump($equipos);
+                require_once "./templates/modificarEquipo.php";
+            }
+            else{
             var_dump($equipos);
+            }
         }
 
         public function mostrarEquiposGrupo($equipos){
             var_dump($equipos);
+            
         }
 
         public function formularioNuevoEquipo(){
