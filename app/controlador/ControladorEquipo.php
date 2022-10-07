@@ -42,7 +42,7 @@
 
         
         public function agregarEquipo(){
-            //if(verificarDatosNuevoEquipo()){
+            if(verificarDatosNuevoEquipo()){
                 var_dump($_POST);
                 $equipo = array(
                     ":pp" => $_POST["pp"],
@@ -57,14 +57,14 @@
                     ":gf" => $_POST["gf"],
                 );
                 $this->modelo->agregarEquipo($equipo);
-                //}
             }
+        }
 
-            public function pedirEquipo(){
+        public function pedirEquipo(){
             $this->vista->formularioNuevoEquipo();
         }
     }
-        
+    
     function verificarDatosNuevoEquipo(){
             return (
                 isset($_POST["pp"]) and !empty($_POST["pp"]) and is_numeric($_POST["pp"]) and

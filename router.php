@@ -27,7 +27,7 @@ switch($params[0]){
                     $controladorEquipo->agregarEquipo();
                 }
             }else{
-                $controladorEquipo->mostrarEquipo($params[1]);
+                $controladorEquipo->equipo($params[1]);
             }
 
         }else{

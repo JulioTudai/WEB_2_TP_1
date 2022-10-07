@@ -1,7 +1,7 @@
 <head>
     <base href="<?php echo BASE_URL ?>">
 </head>
-<form action="equipos/agregar" method="post">
+<form method="post">
         <label for="pais">Pais</label>
         <input type="text" name="pais" id="pais">
 
