@@ -1,0 +1,18 @@
+<?php 
+    class ControladorSesion(){
+
+        public function iniciarSesion($admin){
+            session_start();
+            $_SESSION["admin"] = $usuario->admin;
+            $_SESSION["logueado"] = true;
+        }
+
+        public function cerrarSesion(){
+            session_start();
+            session_destroy();
+        }
+
+        public function esAdmin(){
+            return isset($_SESSION["admin"]) and $_SESSION["admin"];
+        }
+    }

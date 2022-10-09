@@ -13,7 +13,6 @@
                 $sentencia->execute([$id]);
                 return $sentencia->fetch(PDO::FETCH_OBJ);
             }
-
             $sentencia = $this->db->prepare("SELECT * FROM equipos");
             $sentencia->execute();
             return $sentencia->fetchALL(PDO::FETCH_OBJ);
@@ -32,8 +31,9 @@
         }
 
         public function modificarEquipo($equipo){
-           $sentencia =$this->db->prepare("UPDATE equipos SET pais=:pais,puntos=:puntos,pj=:pj,pg=:pg,pe=:pe,pp=:pp,gf=:gf,gc=:gc,dif=:dif,fk_id_grupo=:fk_id_grupo WHERE id_equipo=:id_equipo");
+            $sentencia =$this->db->prepare("UPDATE equipos SET pais=:pais,puntos=:puntos,pj=:pj,pg=:pg,pe=:pe,pp=:pp,gf=:gf,gc=:gc,dif=:dif,fk_id_grupo=:fk_id_grupo WHERE id_equipo=:id_equipo");
             $sentencia->execute($equipo);
+            return $sentencia->rowCount();
         }
 
         public function eliminarEquipo($id){

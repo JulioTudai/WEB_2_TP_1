@@ -1,0 +1,37 @@
+<form action="equipos/modificar" method="post" id="formEquipo">
+        <label for="id_equipo"> id equipo</label>
+        <input type="number" name="id_equipo" id="id_equipo">
+
+        <label for="pais">Pais</label>
+        <input type="text" name="pais" id="pais" required>
+
+        <label for="puntos">puntos</label>
+        <input type="number" name="puntos" id="puntos" required>
+
+        <label for="pj">pj</label>
+        <input type="number" name="pj" id=pj required>
+
+        <label for="pg">pg</label>
+        <input type="number" name="pg" id=pg required>
+        
+        <label for="pe">pe</label>
+        <input type="number" name="pe" id=pe required>
+        
+        <label for="pp">pp</label>
+        <input type="number" name="pp" id=pp required>
+        
+        <label for="gf">gf</label>
+        <input type="number" name="gf" id=gf required>
+        
+        <label for="gc">gc</label>
+        <input type="number" name="gc" id=gc required>
+        
+        <label for="dif">dif</label>
+        <input type="number" name="dif" id=dif required>
+        
+        <label for="grupo"></label>
+        <input type="number" name="grupo" id=grupo required>
+
+        <button id="btnModificar">Modificar Equipo</button>
+        <button id="btnAgregar">Agregar Equipo</button>
+</form>

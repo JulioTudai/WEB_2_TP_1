@@ -2,6 +2,7 @@
 
     require_once "./app/modelo/ModeloEquipo.php";
     require_once "./app/vista/VistaEquipo.php";
+    require_once "./app/controlador/ControladorGrupo.php";
     
     class ControladorEquipo{
         private $modelo;
@@ -10,11 +11,12 @@
         public function __construct(){
             $this->modelo = new ModeloEquipo();
             $this->vista = new VistaEquipo();
+            $this->controladorGrupo = new controladorGrupo();
         }
 
-        public function listaEquipos($a=null){//revisar asi sacamos el null boludo que puso julio
+        public function listaEquipos(){
             $equipos = $this->modelo->obtenerEquipos();
-            $this->vista->listarEquipos($equipos,$a);
+            $this->vista->listarEquipos($equipos);
         }
 
         public function equipo($id){
@@ -42,21 +44,24 @@
 
         
         public function agregarEquipo(){
-            if($this->verificarDatosNuevoEquipo()){
-                var_dump($_POST);
-                $equipo = array(
-                    ":pp" => $_POST["pp"],
-                    ":puntos" => $_POST["puntos"],
-                    ":pj" => $_POST["pj"],
-                    ":pe" => $_POST["pe"],
-                    ":pais" => $_POST["pais"],
-                    ":gc" => $_POST["gc"],
-                    ":fk_id_grupo" => $_POST["grupo"],
-                    ":pg" => $_POST["pg"],
-                    ":dif" => $_POST["dif"],
-                    ":gf" => $_POST["gf"],
-                );
-                $this->modelo->agregarEquipo($equipo);
+            if($this->verificarDatosEquipo()){
+                if($this->controladorGrupo->obtenerGrupo($_POST["grupo"])){
+                    $equipo = array(
+                        ":pp" => $_POST["pp"],
+                        ":puntos" => $_POST["puntos"],
+                        ":pj" => $_POST["pj"],
+                        ":pe" => $_POST["pe"],
+                        ":pais" => $_POST["pais"],
+                        ":gc" => $_POST["gc"],
+                        ":pg" => $_POST["pg"],
+                        ":dif" => $_POST["dif"],
+                        ":gf" => $_POST["gf"],
+                        ":fk_id_grupo" => $_POST["grupo"],
+                    );
+                    $this->modelo->agregarEquipo($equipo);
+                }else{
+                    echo "el grupo no existe";
+                }
             }
         }
 
@@ -65,7 +70,7 @@
         }
 
         public function eliminarEquipoController($idEquipo){
-            if(is_numeric($idEquipo)){ //falta comprobar si el id pertenece a algu numero de los equipos creo
+            if(is_numeric($idEquipo)){
                 if($this->modelo->eliminarEquipo($idEquipo)){
                     echo"equipo Eliminado";          
                 }
@@ -79,30 +84,33 @@
             
         }
 
-        public function mostrarEquipoModificar($mostrarEquipos){
-            $equipos = $this->modelo->obtenerEquipos();
-            $this->vista->listarEquipos($equipos,$mostrarEquipos);
-        }
         public function modificarEquipo(){
-           
-           $equipo = array(
-            ":id_equipo"=>$_POST["id_equipo"],
-            ":pp" => $_POST["pp"],
-            ":puntos" => $_POST["puntos"],
-            ":pj" => $_POST["pj"],
-            ":pe" => $_POST["pe"],
-            ":pais" => $_POST["pais"],
-            ":gc" => $_POST["gc"],
-            ":fk_id_grupo" => $_POST["grupo"],
-            ":pg" => $_POST["pg"],
-            ":dif" => $_POST["dif"],
-            ":gf" => $_POST["gf"],
-            
-        );
-            $this->modelo->modificarEquipo($equipo);
-           var_dump($_POST);
+           if($this->verificarDatosEquipo()){
+               if($this->controladorGrupo->obtenerGrupo($_POST["grupo"])){
+                   $equipo = array(
+                   ":id_equipo"=>$_POST["id_equipo"],
+                   ":pp" => $_POST["pp"],
+                   ":puntos" => $_POST["puntos"],
+                   ":pj" => $_POST["pj"],
+                   ":pe" => $_POST["pe"],
+                   ":pais" => $_POST["pais"],
+                   ":gc" => $_POST["gc"],
+                   ":fk_id_grupo" => $_POST["grupo"],
+                   ":pg" => $_POST["pg"],
+                   ":dif" => $_POST["dif"],
+                   ":gf" => $_POST["gf"],
+                   );
+                   if($this->modelo->modificarEquipo($equipo)){
+                       echo "equipo modificado";
+                   }else{
+                       echo "no existe ese equipo";
+                   }
+               }else{
+                   echo "este grupo no existe";
+               }
+           }
         }
-        private function verificarDatosNuevoEquipo(){
+        private function verificarDatosEquipo(){
                 return (
                     isset($_POST["pp"]) and !empty($_POST["pp"]) and is_numeric($_POST["pp"]) and
                     isset($_POST["puntos"]) and !empty($_POST["puntos"]) and is_numeric($_POST["puntos"]) and

@@ -14,24 +14,21 @@ if(!empty($_GET["action"])){
 
 $params = explode("/" , $action);
 
-
 $controladorEquipo = new ControladorEquipo();
 $controladorGrupo = new ControladorGrupo();
-var_dump($_GET);
-echo"dsadsa"."</br>";
+$controladorUsuario = new ControladorUsuario();
+
 switch($params[0]){
     case "equipos":{        
         if(isset($params[1]) and !empty($params[1])){         
             switch($params[1]){
                 case"agregar":{
-                    $controladorEquipo->pedirEquipo();
                     if(!empty($_POST)){
                         $controladorEquipo->agregarEquipo();
                     }
                     break;
                 }  
                 case "modificar":{
-                     $controladorEquipo->mostrarEquipoModificar($params[1]);
                     if(!empty($_POST)){
                         $controladorEquipo->modificarEquipo();
                     }
@@ -103,8 +100,20 @@ switch($params[0]){
             }
         }
         else{ 
-             $controladorGrupo->listaGrupos();
+             $controladorGrupo->listarGrupos();
         }
+        break;
+    }
+    case "iniciarSesion":{
+        $controladorUsuario->login();
+        break;
+    }
+    case "cerrarSesion":{
+        $controladorUsuario->logout();
+        break;
+    }
+    case "registrarse":{
+        $controladorUsuario->registrarse();
         break;
     }
     case "home":{

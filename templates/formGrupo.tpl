@@ -1,5 +1,5 @@
 <head>
-    <base href="<?php echo BASE_URL ?>">
+    <base href="{$BASE_URL}">
 </head>
 <form method="post">
     <label for="id_grupo">id grupo</label>

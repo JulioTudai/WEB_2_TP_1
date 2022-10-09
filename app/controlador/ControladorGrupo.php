@@ -19,10 +19,16 @@
             return $grupo;
         }
 
-        public function listaGrupos(){
-            $grupos = $this->modelo->obtenerGrupo();
+        public function obtenerGrupo($id=null){
+            $grupos = $this->modelo->obtenerGrupo($id);
+            return $grupos;
+        }
+
+        public function listarGrupos($id=null){
+            $grupos = $this->modelo->obtenerGrupo($id);
             $this->vista->mostrarGrupos($grupos);
         }
+
         public function agregarGrupo(){
             var_dump($_POST);
             if($this->verificarDatosNuevoGrupo()){
@@ -47,7 +53,7 @@
             }    
         }
         public function mostrarGrupoModificar(){
-            $this->listaGrupos();
+            $this->obtenerGrupo();
             $this->vista->formularioModificarGrupo();
         }
         public function modificarGrupo(){  
