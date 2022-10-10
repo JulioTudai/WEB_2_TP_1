@@ -59,6 +59,7 @@
                         ":fk_id_grupo" => $_POST["grupo"],
                     );
                     $this->modelo->agregarEquipo($equipo);
+                    echo"dsadsa";
                 }else{
                     echo "el grupo no existe";
                 }

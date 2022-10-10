@@ -16,7 +16,7 @@ $params = explode("/" , $action);
 
 $controladorEquipo = new ControladorEquipo();
 $controladorGrupo = new ControladorGrupo();
-$controladorUsuario = new ControladorUsuario();
+//$controladorUsuario = new ControladorUsuario();
 
 switch($params[0]){
     case "equipos":{        
@@ -105,15 +105,15 @@ switch($params[0]){
         break;
     }
     case "iniciarSesion":{
-        $controladorUsuario->login();
+       // $controladorUsuario->login();
         break;
     }
     case "cerrarSesion":{
-        $controladorUsuario->logout();
+       // $controladorUsuario->logout();
         break;
     }
     case "registrarse":{
-        $controladorUsuario->registrarse();
+      //  $controladorUsuario->registrarse();
         break;
     }
     case "home":{

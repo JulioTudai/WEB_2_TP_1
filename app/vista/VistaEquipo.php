@@ -1,6 +1,6 @@
 <?php
     
-    require_once "./libs/smarty/Smarty.class.php";
+    require_once "./libs/Smarty.class.php";
 
     class vistaEquipo{
         private $smarty;
