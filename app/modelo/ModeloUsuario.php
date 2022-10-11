@@ -13,16 +13,20 @@ class ModeloUsuario{
         return $usuariosDB = $sentencia->fetch(PDO::FETCH_OBJ);
     }
     public function registrarUsuario($nuevoUsuario){
-        $sentencia=$this->db->prepare("INSERT INTO usuario(email,contrasenia) VALUES ('email,contrasenia')");
+        $sentencia=$this->db->prepare("INSERT INTO usuario(email,contrasenia) VALUES ('email,contrasenia')");               //necesita los dos puntos?   :email,:contrasenia
         return $sentencia->execute($nuevoUsuario);
 
     }
-    public function obtenerUsuario($usuario){
-        
+    public function obtenerUsuario($email = null){
+        if($email){
+            return $sentencia=$this->db->prepare("SELECT * FROM usuario WHERE email = ?");
+        }else{                                                                                                              //hay que implementar traer TODOS los usuarios?
+            return false;
+        }
     }
 
     
 }
 
 
-?>
+/*?>                                                                                                                          no se cierra el tag php
