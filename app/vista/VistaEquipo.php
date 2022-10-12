@@ -1,6 +1,6 @@
 <?php
     
-    require_once "./libs/Smarty.class.php";
+    require_once "./libs/smarty/Smarty.class.php";
 
     class vistaEquipo{
         private $smarty;
@@ -25,10 +25,10 @@
             );
         }
 
-        public function mostrarEquipo($equipo){                                                                         //tiene que mostrar el grupo?
+        public function mostrarEquipo($equipo, $admin){                                                                         //tiene que mostrar el grupo?
             $this->smarty->assign("titulo",$equipo->pais);
             //$this->smarty->assign("equipo",$this->crearArregloParaMostrar($equipo));
-            $this->smarty->assign("admin",true);
+            $this->smarty->assign("admin",$admin);
             $this->smarty->assign("equipo",$equipo);
             $this->smarty->display("./templates/mostrarEquipo.tpl");
         }
@@ -41,7 +41,7 @@
             echo "no se ingreso un id valido";
         }
 
-        public function listarEquipos($equipos){
+        public function listarEquipos($equipos, $admin){
             $arregloEquipos = [];
 
             /*foreach ($equipos as $equipo) {
@@ -50,7 +50,7 @@
             $this->smarty->assign("equipos",$arregloEquipos);*/
 
             $this->smarty->assign("equipos",$equipos);
-            $this->smarty->assign("admin",true);
+            $this->smarty->assign("admin",$admin);
             $this->smarty->display("./templates/mostrarEquipos.tpl");
         }
         public function mostrarEquiposGrupo($equipos){

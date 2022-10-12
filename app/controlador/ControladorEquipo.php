@@ -3,20 +3,25 @@
     require_once "./app/modelo/ModeloEquipo.php";
     require_once "./app/vista/VistaEquipo.php";
     require_once "./app/controlador/ControladorGrupo.php";
+    require_once "./app/controlador/controladorSesion.php";
     
     class ControladorEquipo{
         private $modelo;
         private $vista;
+        private $controladorGrupo;
+        private $controladorSesion;
 
         public function __construct(){
             $this->modelo = new ModeloEquipo();
             $this->vista = new VistaEquipo();
-            $this->controladorGrupo = new controladorGrupo();
+            $this->controladorGrupo = new ControladorGrupo();
+            $this->controladorSesion = new ControladorSesion();
         }
 
         public function listaEquipos(){
             $equipos = $this->modelo->obtenerEquipos();
-            $this->vista->listarEquipos($equipos);
+            $this->vista->listarEquipos($equipos, $this->controladorSesion->esAdmin());
+            var_dump($this->controladorSesion->esAdmin());
         }
 
         public function equipo($id){
@@ -24,7 +29,7 @@
 
                 $equipo = $this->modelo->obtenerEquipos($id);
                 if($equipo){
-                    $this->vista->mostrarEquipo($equipo);
+                    $this->vista->mostrarEquipo($equipo,$this->controladorSesion->esAdmin());
                 }else{
                     $this->vista->equipoNoEncontrado();
                 }
@@ -39,7 +44,7 @@
             //$equiposGrupo = $this->modelo->obtenerEquiposGrupo($_GET["grupo"]);
 
             $equiposGrupo = $this->modelo->obtenerEquiposGrupo($grupo);
-            $this->vista->mostrarEquiposGrupo($equiposGrupo);
+            $this->vista->mostrarEquiposGrupo($equiposGrupo, $this->controladorSesion->esAdmin());
         }
 
         

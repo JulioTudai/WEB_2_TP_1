@@ -1,9 +1,9 @@
 <?php 
-    class ControladorSesion(){
+    class ControladorSesion{
 
         public function iniciarSesion($admin){
             session_start();
-            $_SESSION["admin"] = $usuario->admin;
+            $_SESSION["admin"] = $admin;
             $_SESSION["logueado"] = true;
         }
 
@@ -13,6 +13,7 @@
         }
 
         public function esAdmin(){
+            session_start();
             return isset($_SESSION["admin"]) and $_SESSION["admin"];
         }
     }

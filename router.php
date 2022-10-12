@@ -4,7 +4,7 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 
 require_once "./app/controlador/ControladorEquipo.php";
 require_once "./app/controlador/ControladorGrupo.php";
-
+require_once "./app/controlador/ControladorUsuario.php";
 
 if(!empty($_GET["action"])){
     $action = $_GET["action"];
@@ -16,7 +16,7 @@ $params = explode("/" , $action);
 
 $controladorEquipo = new ControladorEquipo();
 $controladorGrupo = new ControladorGrupo();
-//$controladorUsuario = new ControladorUsuario();
+$controladorUsuario = new ControladorUsuario();
 
 switch($params[0]){
     case "equipos":{        
@@ -84,7 +84,7 @@ switch($params[0]){
                     break;
                 }  
                 case "modificar":{
-                     $controladorGrupo->mostrarGrupoModificar();
+                    $controladorGrupo->mostrarGrupoModificar();
                     if(!empty($_POST)){
                         $controladorGrupo->modificarGrupo();
                     }
@@ -105,15 +105,15 @@ switch($params[0]){
         break;
     }
     case "iniciarSesion":{
-       // $controladorUsuario->login();
+        $controladorUsuario->iniciarSesion();
         break;
     }
     case "cerrarSesion":{
-       // $controladorUsuario->logout();
+        $controladorUsuario->cerrarSesion();
         break;
     }
     case "registrarse":{
-      //  $controladorUsuario->registrarse();
+        $controladorUsuario->registrarse();
         break;
     }
     case "home":{
