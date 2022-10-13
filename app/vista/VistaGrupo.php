@@ -8,11 +8,8 @@
 
         public function __construct(){
             $this->smarty = new Smarty();
-<<<<<<< HEAD
-=======
             $this->controladorSesion= new ControladorSesion();
             $this->smarty->assign('logueado',$this->controladorSesion->usuarioLogueado());
->>>>>>> 079cd17e3a528355bc87a4065a82fd2ad820e0c1
             $this->smarty->assign("BASE_URL", BASE_URL); //o algo asi
         }
         public function mostrarGrupos($grupos){

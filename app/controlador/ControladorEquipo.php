@@ -4,45 +4,31 @@
     require_once "./app/vista/VistaEquipo.php";
     require_once "./app/controlador/ControladorGrupo.php";
     require_once "./app/controlador/controladorSesion.php";
-<<<<<<< HEAD
     require_once "./app/modelo/ModeloGrupo.php";
-=======
     require_once "./app/controlador/ControladorHome.php";
->>>>>>> 079cd17e3a528355bc87a4065a82fd2ad820e0c1
     
     class ControladorEquipo{
         private $modelo;
         private $vista;
         private $controladorGrupo;
         private $controladorSesion;
-<<<<<<< HEAD
         private $modeloGrupo;
-=======
-        private $controladorHome;
->>>>>>> 079cd17e3a528355bc87a4065a82fd2ad820e0c1
+        //private $controladorHome;
 
         public function __construct(){
             $this->modelo = new ModeloEquipo();
             $this->vista = new VistaEquipo();
             $this->controladorGrupo = new ControladorGrupo();
             $this->controladorSesion = new ControladorSesion();
-<<<<<<< HEAD
             $this->modeloGrupo = new ModeloGrupo();
-=======
-            $this->controladorHome = new ControladorHome();
->>>>>>> 079cd17e3a528355bc87a4065a82fd2ad820e0c1
+            //$this->controladorHome = new ControladorHome();
         }
 
         public function listaEquipos(){
             $equipos = $this->modelo->obtenerEquipos();
-<<<<<<< HEAD
             $admin = $this->controladorSesion->esAdmin();
             $grupos = $this->modeloGrupo->obtenerGrupo();
             $this->vista->listarEquipos($equipos, $admin, $grupos);
-=======
-            $this->vista->listarEquipos($equipos, $this->controladorSesion->esAdmin());
-            //var_dump($this->controladorSesion->esAdmin());
->>>>>>> 079cd17e3a528355bc87a4065a82fd2ad820e0c1
         }
 
         public function equipo($id){
