@@ -1,12 +1,15 @@
 <?php
-    
+    require_once './app/controlador/ControladorSesion.php';
     require_once "./libs/smarty/Smarty.class.php";
 
     class vistaEquipo{
         private $smarty;
+        private $controladorSesion;
 
         public function __construct(){
             $this->smarty = new Smarty();
+            $this->controladorSesion= new ControladorSesion();
+            $this->smarty->assign('logueado',$this->controladorSesion->usuarioLogueado());
             $this->smarty->assign("BASE_URL", BASE_URL); //o algo asi
         }
 
@@ -48,14 +51,18 @@
             $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/mostrarEquipos.tpl");
         }
+<<<<<<< HEAD
         public function mostrarEquiposGrupo($equipos,$grupo,$admin,$grupos){
             $this->smarty->assign("equipos",$equipos);
             $this->smarty->assign("grupo",$grupo);
             $this->smarty->assign("admin",$admin);                                               //TODO preguntar hago asi para reutilizar el mostrar equipos?
             $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/equiposGrupo.tpl");
+=======
+        public function mostrarEquiposGrupo($equipos){
+            var_dump($equipos);            
+>>>>>>> 079cd17e3a528355bc87a4065a82fd2ad820e0c1
         }
-
         public function formularioNuevoEquipo(){
             require_once "./templates/formEquipo.php";
         }

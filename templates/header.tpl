@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="{$BASE_URL}">
-
     <link href="https://fonts.googleapis.com/css2?family=Tapestry&display=swap" rel="stylesheet"><meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="css/style.css">
+    
+    
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100&family=Bungee+Shade&family=Caveat&family=Chau+Philomene+One&family=Tapestry&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100&family=Bungee+Shade&family=Caveat&family=Tapestry&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Caveat&family=Tapestry&display=swap" rel="stylesheet">
     <title>{$titulo}</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="cuerpo"> 
@@ -26,7 +27,12 @@
                     <li><a class="linksNav" href="home">Inicio</a></li>
                     <li><a class="linksNav" href="equipos">Equipos</a></li>
                     <li><a class="linksNav" href="grupos">Grupos</a></li>
-                    <li><a class="linksNav" href="iniciarSesion">Iniciar Sesion</a></li>
+                    {if ($logueado)}
+                        <li><a class="linksNav" href="cerrarSesion">Cerrar Sesion</a></li>
+                        {else}
+                        <li><a class="linksNav" href="registrarse">Registrarse</a></li>
+                        <li><a class="linksNav" href="iniciarSesion">Iniciar Sesion</a></li>
+                    {/if}
                 </ul>
             </nav>
         </header>

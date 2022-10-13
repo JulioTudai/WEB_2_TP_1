@@ -1,0 +1,529 @@
+*{  
+    padding:0;
+    margin: 0;
+    border: 0;
+}
+
+.contenedorLogo{
+    grid-area: logo;
+}
+
+.noScroll{
+    overflow: hidden;
+}
+
+.logo{
+    object-fit: contain;
+    width: 100%;
+}
+.cuerpo{
+    background:linear-gradient(to right,rgba(255,211,45,0.8) 15%,rgba(33,85,205,0.8) 45%,rgba(54, 174, 124,0.8) 90%);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    margin: 0.5rem 0.5rem;
+}
+
+.formModificarEquipo{
+    background:linear-gradient(#FFFFFF 30%,#F9FFA4);
+    border-radius: 10px;
+    border: solid black 3px;
+    display: flex;
+    row-gap: 1rem;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+
+.formModificarEquipo > div{
+    display: flex;
+    justify-content: space-evenly;
+    column-gap: 1rem;
+}
+.divModificarEquipo{
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#taparTodo{
+    z-index: 1;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.imgHamburguesa{
+    object-fit:cover;
+    width: 3rem;
+}
+
+.fotoEstadio{
+    width: 95%;
+    align-self: center;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 3rem 1fr 3.5rem;
+    grid-template-areas: "logo titulo botonMenu"
+                            "nav nav nav";
+    position: sticky;
+    grid-column-gap: 1rem;
+    top:0px;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    align-items: center;
+    background-clip: border-box;
+    background-color: rgba(255,211,45,1);
+}
+
+h1, h2, h3, h4{
+    text-align: center;
+}
+
+h1{
+    grid-area: titulo;
+    font-size: 1.5rem;
+    color: darkred;
+    font-family: 'Bungee Shade', cursive;
+}
+
+h2{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h3{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.sedes{
+    letter-spacing: 0.2rem;
+    color: darkred;
+    font-family: 'tapestry',cursive;
+}
+.botonMenu{
+    height: 100%;
+    grid-area: botonMenu;
+    background-color: transparent;
+    border: none;
+}
+nav{
+    grid-area: nav;
+}
+
+.linksNav{
+    padding: 0.5rem;
+}
+li{
+    list-style-position: inside;
+    text-align: center;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    flex-wrap: wrap;
+}
+
+.listasEquipos{
+    display: flex;
+    flex-direction: column;
+    background: rgba(121, 218, 232,0.3);
+    border-radius: 30px;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    row-gap: 1rem;
+}
+.listaPaises{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.repechaje{
+    color:darkred;   
+
+}
+.equiposRepechaje{
+    font-size: 1.5em;
+    color: darkred;
+    text-align: center;
+}
+
+#formFixture > div{
+    display: flex;
+    justify-content: space-around;
+    column-gap: 1rem;
+
+}
+#formFixture{
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;    
+}
+button, input, select{
+    border: solid black 1px;
+}
+
+.inputNumero{
+    width: 2rem;
+}
+
+.areaInputEquipo input{
+    width: 7rem;
+}
+
+.fixture{
+    width: 100%;
+}
+.actualizarEquipos{
+    font-size: 1.7rem;
+}
+
+.contenedorGrupos td{
+    text-align: center;
+}
+
+.contenedorGrupos{
+    display: flex;
+    flex-direction: column;
+}
+
+.botonFechas{
+    width: 100%;
+    align-self: center;
+    border-radius: 0px 0px 50px 50px;
+    background:linear-gradient(#FFFFFF,#7FB5FF);
+    border-left: solid black 2px;
+    border-right: solid black 2px;
+    border-bottom: solid black 2px;
+}
+
+.contenedorEstadio{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+.nombresEstadios{
+    font-family: 'tapestry',cursive;
+    color :rgb(134, 25, 8);
+}
+.contenedorFormSubscripcion{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.formSubscripcion, .formSubscripcion input, .formSubscripcion select, .formSubscripcion button{
+    font-size: 1.5rem;
+}
+.formSubscripcion > div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.formSubscripcion label{
+    min-width: 7rem;
+}
+
+.formSubscripcion{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+}
+.linksNav{
+    color: black;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+table, tr, td,th{
+    font-size: 1rem;
+    border: solid black 2px;
+    border-collapse: collapse;
+    height: fit-content;
+}
+
+input:invalid, .incorrecto{
+    border: solid red 2px;
+}
+
+.incorrecto{
+    background-color: rgba(255, 73, 73,0.5);
+}
+
+.parrafoValidacion{
+    text-align: center;
+    font-size: 2rem;
+}
+.correcto{
+    border: solid green 2px;
+    background-color: rgb(54 174 124);
+}
+
+.captcha{
+    font-size: 2.5rem;
+    width: fit-content;
+}
+
+.captcha, .inputCaptcha, .formSubscripcion button{
+    align-self: center;
+}
+tr{
+    font-family: cursive;
+    background:linear-gradient(#FFFFFF 30%,#F9FFA4)
+}
+
+th{
+    background:linear-gradient(#7FB5FF,#FFFFFF)
+}
+
+.resaltar{
+    background: #36AE7C;
+}
+
+button{
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.descripcionEstadio{
+    padding-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.contenedorFixture{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    margin: 2rem 0;
+}
+
+.contenedorSedes{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.sorteo{
+    color: darkred;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+    background: rgba(180, 255, 159,0.3);
+    border-radius: 70px;
+    text-align: center;
+}
+
+.partido{
+    flex-basis: 50%;
+}
+
+.partido p{
+    text-align: center;
+}
+
+.fecha{
+    display: flex;
+}
+
+.parrafoAdvertencia{
+    display: none;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.mostrarAdvertencia{
+    display: block;
+}
+
+.noMostrar{
+    display: none;
+}
+
+td div{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.fecha h4{
+    width: 100%;
+}
+
+@media only screen and (max-width: 799px){
+
+    nav a{
+        background: rgb(231,215,129);
+        border-color: black;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 20px;
+        margin: 0.5rem 0;
+        display: block;
+    }
+
+
+    .listaPaises{
+        list-style: none;
+        column-gap: 1rem;
+    }
+
+    .fecha{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .contenedorFechas{
+        background:linear-gradient(#FFFFFF 30%,#F9FFA4);
+        border-left: solid black 2px;
+        border-right: solid black 2px;
+    }
+}
+    td button{
+        margin: 0.2rem;
+    }
+@media only screen and (min-width: 800px){
+
+    .cuerpo{
+        background: linear-gradient(rgba(255,211,45,0.8) 10%,rgba(33,85,205,0.8) 30%,rgba(54, 174, 124,0.8) 80%);
+    }
+    header{
+        grid-area: header;
+        display: flex;
+        padding: 0.5rem;
+    }
+
+    #barraNav{
+        display: flex;
+        height: 5rem;
+        flex-direction: row;
+        width: 60%;
+        align-items: center;
+        justify-content: space-evenly;        
+        border-radius: 40px;
+        border: black solid 0.1rem;
+        background:rgba(196,221,255,0.4)        
+    }
+    nav ul {
+        width: 100%;
+    }
+    h2{   
+        margin-bottom: 0.2rem;
+        font-size: 2.5rem;
+    }
+    .actualizarEquipos{
+        font-size: 1.7rem;
+    }
+    #formFixture{
+        font-size: 1.2rem;
+        margin: 1rem 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .inputNumero{
+        width: 5rem;
+    }  
+
+    .linksNav:hover{
+        background: rgba(84,227,70,0.5);
+        border:solid black 1px;
+        border-radius: 15px;
+    }
+
+    .linksNav{
+        border: solid rgba(196,221,255,0) 1px; /* borde transparente para que no se corra con el hover */
+        padding: 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    .botonMenu, .botonFechas{
+        display: none;
+    }
+    h1{
+        font-size: 2rem;
+        width: 35%;
+    }
+    .contenedorLogo{
+        width: 3rem;
+    }
+    .contenedorSedes{
+        flex-wrap: wrap;
+        flex-direction: row;
+        column-gap: 1rem;
+    }
+
+    .parrafosInicio{
+        font-size: 1.5em;
+    }
+
+    .listasEquipos{
+        justify-content: space-evenly;
+        display: flex;
+        flex-direction: row;
+    }
+    .continentes{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .listaPaises{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fixture{
+        flex-basis: 40%;
+        flex-shrink: 0;
+    }
+
+    .fecha{
+        font-size: 1.3rem;
+        flex-basis: 30%;
+        text-align: center;
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
+    .contenedorGrupos{
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .contenedorFechas{
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-evenly;
+    }
+
+    .contenedorEstadio{
+        flex-basis: 40%;
+        flex-grow: 1;
+    }
+
+   
+}
