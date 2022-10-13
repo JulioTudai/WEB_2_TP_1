@@ -1,12 +1,15 @@
 <?php
-    
+    require_once './app/controlador/ControladorSesion.php';
     require_once "./libs/smarty/Smarty.class.php";
 
     class vistaEquipo{
         private $smarty;
+        private $controladorSesion;
 
         public function __construct(){
             $this->smarty = new Smarty();
+            $this->controladorSesion= new ControladorSesion();
+            $this->smarty->assign('logueado',$this->controladorSesion->usuarioLogueado());
             $this->smarty->assign("BASE_URL", BASE_URL); //o algo asi
         }
 
@@ -54,10 +57,8 @@
             $this->smarty->display("./templates/mostrarEquipos.tpl");
         }
         public function mostrarEquiposGrupo($equipos){
-            var_dump($equipos);
-            
+            var_dump($equipos);            
         }
-
         public function formularioNuevoEquipo(){
             require_once "./templates/formEquipo.php";
         }

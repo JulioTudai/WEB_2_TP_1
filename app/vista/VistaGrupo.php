@@ -1,13 +1,16 @@
 <?php
-
+    require_once './app/controlador/ControladorSesion.php';
     require_once "./libs/smarty/Smarty.class.php";
 
     class vistaGrupo{
         private $smarty;
+        private $controladorSesion;
 
         public function __construct(){
             $this->smarty = new Smarty();
-            $this->smarty->assign("baseURL", BASE_URL); //o algo asi
+            $this->controladorSesion= new ControladorSesion();
+            $this->smarty->assign('logueado',$this->controladorSesion->usuarioLogueado());
+            $this->smarty->assign("BASE_URL", BASE_URL); //o algo asi
         }
         public function mostrarGrupos($grupos){
             var_dump($grupos);  
@@ -24,3 +27,4 @@
             require_once "./templates/formModificarGrupo.php";
         }
     }
+    //crear smartys lindos para  grupos

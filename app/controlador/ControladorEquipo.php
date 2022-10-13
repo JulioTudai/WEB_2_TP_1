@@ -4,24 +4,27 @@
     require_once "./app/vista/VistaEquipo.php";
     require_once "./app/controlador/ControladorGrupo.php";
     require_once "./app/controlador/controladorSesion.php";
+    require_once "./app/controlador/ControladorHome.php";
     
     class ControladorEquipo{
         private $modelo;
         private $vista;
         private $controladorGrupo;
         private $controladorSesion;
+        private $controladorHome;
 
         public function __construct(){
             $this->modelo = new ModeloEquipo();
             $this->vista = new VistaEquipo();
             $this->controladorGrupo = new ControladorGrupo();
             $this->controladorSesion = new ControladorSesion();
+            $this->controladorHome = new ControladorHome();
         }
 
         public function listaEquipos(){
             $equipos = $this->modelo->obtenerEquipos();
             $this->vista->listarEquipos($equipos, $this->controladorSesion->esAdmin());
-            var_dump($this->controladorSesion->esAdmin());
+            //var_dump($this->controladorSesion->esAdmin());
         }
 
         public function equipo($id){
@@ -49,8 +52,8 @@
 
         
         public function agregarEquipo(){
-            if($this->verificarDatosEquipo()){
-                if($this->controladorGrupo->obtenerGrupo($_POST["grupo"])){
+            if($this->controladorSesion->esAdmin()){
+                if($this->verificarDatosEquipo() and $this->controladorGrupo->obtenerGrupo($_POST["grupo"]) ) {
                     $equipo = array(
                         ":pp" => $_POST["pp"],
                         ":puntos" => $_POST["puntos"],
@@ -64,11 +67,14 @@
                         ":fk_id_grupo" => $_POST["grupo"],
                     );
                     $this->modelo->agregarEquipo($equipo);
-                    echo"dsadsa";
+                    header('Location:'.BASE_URL.'equipos');           
                 }else{
-                    echo "el grupo no existe";
+                    echo "datos no validos";
                 }
+            }else{
+                echo"permisos no validos";
             }
+            
         }
 
         public function pedirEquipo(){

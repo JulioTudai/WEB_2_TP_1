@@ -5,6 +5,7 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 require_once "./app/controlador/ControladorEquipo.php";
 require_once "./app/controlador/ControladorGrupo.php";
 require_once "./app/controlador/ControladorUsuario.php";
+require_once "./app/controlador/ControladorHome.php";
 
 if(!empty($_GET["action"])){
     $action = $_GET["action"];
@@ -17,12 +18,15 @@ $params = explode("/" , $action);
 $controladorEquipo = new ControladorEquipo();
 $controladorGrupo = new ControladorGrupo();
 $controladorUsuario = new ControladorUsuario();
+$controladorHome = new ControladorHome();
 
 switch($params[0]){
-    case "equipos":{        
+    case "equipos":{ 
+           
         if(isset($params[1]) and !empty($params[1])){         
             switch($params[1]){
                 case"agregar":{
+                   
                     if(!empty($_POST)){
                         $controladorEquipo->agregarEquipo();
                     }
@@ -117,7 +121,7 @@ switch($params[0]){
         break;
     }
     case "home":{
-        echo "este es el home asd";
+        $controladorHome->llamarHome();
         break;    
     }
     default:{
