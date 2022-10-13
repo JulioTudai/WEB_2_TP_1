@@ -7,9 +7,11 @@
 
         public function __construct(){
             $this->smarty = new Smarty();
-            $this->smarty->assign("baseURL", BASE_URL); //o algo asi
+            $this->smarty->assign("BASE_URL", BASE_URL); //o algo asi
         }
         public function mostrarGrupos($grupos){
+            $this->smarty->assign("grupos",$grupos);
+            $this->smarty->display("./templates/grupos.tpl");
             var_dump($grupos);  
                      
         }

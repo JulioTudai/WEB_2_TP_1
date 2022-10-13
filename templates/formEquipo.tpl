@@ -9,28 +9,33 @@
         <input type="number" name="puntos" id="puntos" required>
 
         <label for="pj">pj</label>
-        <input type="number" name="pj" id=pj required>
+        <input type="number" name="pj" id="pj" required>
 
         <label for="pg">pg</label>
-        <input type="number" name="pg" id=pg required>
+        <input type="number" name="pg" id="pg" required>
         
         <label for="pe">pe</label>
-        <input type="number" name="pe" id=pe required>
+        <input type="number" name="pe" id="pe" required>
         
         <label for="pp">pp</label>
-        <input type="number" name="pp" id=pp required>
+        <input type="number" name="pp" id="pp" required>
         
         <label for="gf">gf</label>
-        <input type="number" name="gf" id=gf required>
+        <input type="number" name="gf" id="gf" required>
         
         <label for="gc">gc</label>
-        <input type="number" name="gc" id=gc required>
+        <input type="number" name="gc" id="gc" required>
         
         <label for="dif">dif</label>
-        <input type="number" name="dif" id=dif required>
+        <input type="number" name="dif" id="dif" required>
         
         <label for="grupo"></label>
-        <input type="number" name="grupo" id=grupo required>
+        <select name="grupo" id="grupo" required>
+                {foreach from=$grupos item=$grupo}
+                        <option value= "{$grupo->id_grupo}">Grupo {$grupo->nombre}</option>
+                {/foreach}
+                
+        </select>
 
         <button id="btnModificar">Modificar Equipo</button>
         <button id="btnAgregar">Agregar Equipo</button>

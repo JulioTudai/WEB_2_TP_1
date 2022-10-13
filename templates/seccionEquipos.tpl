@@ -1,5 +1,4 @@
-{include file="header.tpl"}
-{*<main>
+<div> 
     {if $admin}
         {include file="formEquipo.tpl"}
     {/if}
@@ -38,6 +37,7 @@
             {/foreach}
         </tbody>
     </table>
-</main>*}
-{include file="seccionEquipos.tpl"}
-{include file="footer.tpl"}
+    {if $admin}
+    <script src="js/formEquipo.js"></script>
+    {/if}
+</div>

@@ -25,11 +25,12 @@
             );
         }
 
-        public function mostrarEquipo($equipo, $admin){                                                                         //tiene que mostrar el grupo?
+        public function mostrarEquipo($equipo, $admin, $grupos){                                                                         //tiene que mostrar el grupo?
             $this->smarty->assign("titulo",$equipo->pais);
             //$this->smarty->assign("equipo",$this->crearArregloParaMostrar($equipo));
             $this->smarty->assign("admin",$admin);
             $this->smarty->assign("equipo",$equipo);
+            $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/mostrarEquipo.tpl");
         }
 
@@ -41,21 +42,18 @@
             echo "no se ingreso un id valido";
         }
 
-        public function listarEquipos($equipos, $admin){
-            $arregloEquipos = [];
-
-            /*foreach ($equipos as $equipo) {
-                array_push($arregloEquipos,$this->crearArregloParaMostrar($equipo));
-            }
-            $this->smarty->assign("equipos",$arregloEquipos);*/
-
+        public function listarEquipos($equipos, $admin,$grupos){
             $this->smarty->assign("equipos",$equipos);
             $this->smarty->assign("admin",$admin);
+            $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/mostrarEquipos.tpl");
         }
-        public function mostrarEquiposGrupo($equipos){
-            var_dump($equipos);
-            
+        public function mostrarEquiposGrupo($equipos,$grupo,$admin,$grupos){
+            $this->smarty->assign("equipos",$equipos);
+            $this->smarty->assign("grupo",$grupo);
+            $this->smarty->assign("admin",$admin);                                               //TODO preguntar hago asi para reutilizar el mostrar equipos?
+            $this->smarty->assign("grupos",$grupos);
+            $this->smarty->display("./templates/equiposGrupo.tpl");
         }
 
         public function formularioNuevoEquipo(){

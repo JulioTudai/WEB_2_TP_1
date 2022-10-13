@@ -4,24 +4,28 @@
     require_once "./app/vista/VistaEquipo.php";
     require_once "./app/controlador/ControladorGrupo.php";
     require_once "./app/controlador/controladorSesion.php";
+    require_once "./app/modelo/ModeloGrupo.php";
     
     class ControladorEquipo{
         private $modelo;
         private $vista;
         private $controladorGrupo;
         private $controladorSesion;
+        private $modeloGrupo;
 
         public function __construct(){
             $this->modelo = new ModeloEquipo();
             $this->vista = new VistaEquipo();
             $this->controladorGrupo = new ControladorGrupo();
             $this->controladorSesion = new ControladorSesion();
+            $this->modeloGrupo = new ModeloGrupo();
         }
 
         public function listaEquipos(){
             $equipos = $this->modelo->obtenerEquipos();
-            $this->vista->listarEquipos($equipos, $this->controladorSesion->esAdmin());
-            var_dump($this->controladorSesion->esAdmin());
+            $admin = $this->controladorSesion->esAdmin();
+            $grupos = $this->modeloGrupo->obtenerGrupo();
+            $this->vista->listarEquipos($equipos, $admin, $grupos);
         }
 
         public function equipo($id){
@@ -29,7 +33,9 @@
 
                 $equipo = $this->modelo->obtenerEquipos($id);
                 if($equipo){
-                    $this->vista->mostrarEquipo($equipo,$this->controladorSesion->esAdmin());
+                    $admin = $this->controladorSesion->esAdmin();
+                    $grupos = $this->modeloGrupo->obtenerGrupo();
+                    $this->vista->mostrarEquipo($equipo,$admin,$grupos);
                 }else{
                     $this->vista->equipoNoEncontrado();
                 }
@@ -39,12 +45,15 @@
             }
         }
 
-        public function equiposDeGrupo($grupo){
+        public function equiposDeGrupo($idGrupo){
 
-            //$equiposGrupo = $this->modelo->obtenerEquiposGrupo($_GET["grupo"]);
-
-            $equiposGrupo = $this->modelo->obtenerEquiposGrupo($grupo);
-            $this->vista->mostrarEquiposGrupo($equiposGrupo, $this->controladorSesion->esAdmin());
+            $equiposGrupo = $this->modelo->obtenerEquiposGrupo($idGrupo);
+            if($equiposGrupo){
+                $nombreGrupo = $equiposGrupo[0]->grupo;
+            }
+            $admin = $this->controladorSesion->esAdmin();
+            $grupos = $this->modeloGrupo->obtenerGrupo();
+            $this->vista->mostrarEquiposGrupo($equiposGrupo,$nombreGrupo,$admin,$grupos);
         }
 
         
@@ -71,9 +80,6 @@
             }
         }
 
-        public function pedirEquipo(){
-            $this->vista->formularioNuevoEquipo();
-        }
 
         public function eliminarEquipoController($idEquipo){
             if(is_numeric($idEquipo)){

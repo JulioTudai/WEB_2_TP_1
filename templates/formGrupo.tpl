@@ -1,6 +1,3 @@
-<head>
-    <base href="{$BASE_URL}">
-</head>
 <form method="post">
     <label for="id_grupo">id grupo</label>
     <input type="number" name="id_grupo" id="id_grupo">
