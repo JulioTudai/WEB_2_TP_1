@@ -87,7 +87,6 @@ switch($params[0]){
         if(isset($params[1]) and !empty($params[1])){         
             switch($params[1]){
                 case"agregar":{
-                    $controladorGrupo->pedirGrupo();
                     if(!empty($_POST)){
                         echo"asdasdas";
                         $controladorGrupo->agregarGrupo();
@@ -95,9 +94,10 @@ switch($params[0]){
                     break;
                 }  
                 case "modificar":{
-                    $controladorGrupo->mostrarGrupoModificar();
-                    if(!empty($_POST)){
-                        $controladorGrupo->modificarGrupo();
+                    if(isset($params[2]) and !empty($params[2])){
+                        $controladorGrupo->modificarGrupo($params[2]);
+                    }else{
+                        $controladorHome->redireccionarHome();
                     }
                     break;
                 }

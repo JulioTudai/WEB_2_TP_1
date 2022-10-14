@@ -19,20 +19,21 @@
 
         public function iniciarSesion(){
             if(!$this->controladorSesion->usuarioLogueado()){
-                
-                if($this->verificarFormUsuario()){
-                    $usuario = $this->modelo->obtenerUsuario($_POST["email"]);
-
-                    if($usuario and password_verify($_POST["contrasenia"],($usuario->contrasenia))){
-                        
-                        $this->controladorSesion->iniciarSesion($usuario);
-                        header("Location: home");
-                        
+                if(!empty($_POST)){
+                    if($this->verificarFormUsuario()){
+                        $usuario = $this->modelo->obtenerUsuario($_POST["email"]);
+    
+                        if($usuario and password_verify($_POST["contrasenia"],($usuario->contrasenia))){
+                            
+                            $this->controladorSesion->iniciarSesion($usuario);
+                            header("Location: home");
+                            
+                        }else{
+                            echo "mail o contraseña no validos";
+                        }
                     }else{
-                        echo "no existe";
+                        echo "formulario no valido";
                     }
-                }else{
-                    echo "formulario no valido";
                 }
                 $this->vista->mostrarLogin("Iniciar Sesion");
             }else{
@@ -47,25 +48,27 @@
 
         public function registrarse(){
             if(!$this->controladorSesion->usuarioLogueado()){
-                if($this->verificarFormUsuario()){
-                    //if($usuariosExistentes=$this->modelo->listaUsuariosDB() and $this->verificarUsuarioExistente($usuariosExistentes)){
-                    if(!$this->modelo->obtenerUsuario($_POST['email'])){
+                if(!empty($_POST)){
+                    if($this->verificarFormUsuario()){
+                        //if($usuariosExistentes=$this->modelo->listaUsuariosDB() and $this->verificarUsuarioExistente($usuariosExistentes)){
+                        if(!$this->modelo->obtenerUsuario($_POST['email'])){
 
-                        $nuevoUsuario=[
-                            ":email"=>$_POST['email'],
-                            ":contrasenia"=>password_hash($_POST['contrasenia'],PASSWORD_BCRYPT),
-                            ":administrador"=>false                   //nuevos usuarios no son admin
-                        ];
-                        $usuarioCreado = $this->modelo->registrarUsuario($nuevoUsuario);
-                        $this->controladorSesion->iniciarSesion($usuarioCreado);
-                        header("Location: home");
-                        
+                            $nuevoUsuario=[
+                                ":email"=>$_POST['email'],
+                                ":contrasenia"=>password_hash($_POST['contrasenia'],PASSWORD_BCRYPT),
+                                ":administrador"=>false                   //nuevos usuarios no son admin
+                            ];
+                            $usuarioCreado = $this->modelo->registrarUsuario($nuevoUsuario);
+                            $this->controladorSesion->iniciarSesion($usuarioCreado);
+                            header("Location: home");
+                            
+                        }else{
+                            echo"el usuario ya existe";
+                        }
+
                     }else{
-                        echo"el usuario ya existe";
+                        echo "Error al crear usuario"; 
                     }
-
-                }else{
-                    echo "Error al crear usuario"; 
                 }
                 $this->vista->mostrarLogin("Registrarse");
             }else{

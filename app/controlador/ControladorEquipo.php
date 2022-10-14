@@ -13,7 +13,6 @@
         private $controladorGrupo;
         private $controladorSesion;
         private $modeloGrupo;
-        //private $controladorHome;
 
         public function __construct(){
             $this->modelo = new ModeloEquipo();
@@ -21,7 +20,6 @@
             $this->controladorGrupo = new ControladorGrupo();
             $this->controladorSesion = new ControladorSesion();
             $this->modeloGrupo = new ModeloGrupo();
-            //$this->controladorHome = new ControladorHome();
         }
 
         public function listaEquipos(){
@@ -58,7 +56,6 @@
             $grupos = $this->modeloGrupo->obtenerGrupo();
             $this->vista->mostrarEquiposGrupo($equiposGrupo,$nombreGrupo,$admin,$grupos);
         }
-
         
         public function agregarEquipo(){
             if($this->controladorSesion->esAdmin()){

@@ -12,21 +12,18 @@
             $this->smarty->assign('logueado',$this->controladorSesion->usuarioLogueado());
             $this->smarty->assign("BASE_URL", BASE_URL); //o algo asi
         }
-        public function mostrarGrupos($grupos){
+        public function mostrarGrupos($grupos,$admin){
             $this->smarty->assign("grupos",$grupos);
+            $this->smarty->assign("admin",$admin);
             $this->smarty->display("./templates/grupos.tpl");
-            var_dump($grupos);  
                      
         }
         public function idGrupoNoValido(){
             echo "no se ingreso un id valido";
         }
-        public function formularioNuevoGrupo(){
-            echo"dsadsadsa";
-            require_once "./templates/formGrupos.php";
-        }
+
         public function formularioModificarGrupo(){
-            require_once "./templates/formModificarGrupo.php";
+            $this->smarty->display("./templates/modificarGrupo.tpl");
         }
     }
     //crear smartys lindos para  grupos

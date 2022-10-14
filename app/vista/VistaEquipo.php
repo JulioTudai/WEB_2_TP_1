@@ -62,6 +62,6 @@
             if($error){                                                                         // TODO con smarty
                 echo $error;
             }
-            $this->smarty->display("./templates/modificar.tpl");
+            $this->smarty->display("./templates/modificarEquipo.tpl");
         }
     }
