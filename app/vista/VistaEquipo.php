@@ -28,9 +28,8 @@
             );
         }
 
-        public function mostrarEquipo($equipo, $admin, $grupos){                                                                         //tiene que mostrar el grupo?
+        public function mostrarEquipo($equipo, $admin, $grupos){                                                                      
             $this->smarty->assign("titulo",$equipo->pais);
-            //$this->smarty->assign("equipo",$this->crearArregloParaMostrar($equipo));
             $this->smarty->assign("admin",$admin);
             $this->smarty->assign("equipo",$equipo);
             $this->smarty->assign("grupos",$grupos);
@@ -45,20 +44,24 @@
             echo "no se ingreso un id valido";
         }
 
-        public function listarEquipos($equipos, $admin,$grupos){
+        public function listarEquipos($equipos,$admin,$grupos){
             $this->smarty->assign("equipos",$equipos);
             $this->smarty->assign("admin",$admin);
             $this->smarty->assign("grupos",$grupos);
-            $this->smarty->display("./templates/mostrarEquipos.tpl");
+            $this->smarty->display("./templates/equipos.tpl");
         }
         public function mostrarEquiposGrupo($equipos,$grupo,$admin,$grupos){
             $this->smarty->assign("equipos",$equipos);
             $this->smarty->assign("grupo",$grupo);
-            $this->smarty->assign("admin",$admin);                                               //TODO preguntar hago asi para reutilizar el mostrar equipos?
+            $this->smarty->assign("admin",$admin);                                               // TODO preguntar hago asi para reutilizar el mostrar equipos?
             $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/equiposGrupo.tpl");
         }
-        public function formularioNuevoEquipo(){
-            require_once "./templates/formEquipo.php";
+        public function imprimirFormulario($error = null, $grupos){
+            $this->smarty->assign("grupos",$grupos);
+            if($error){                                                                         // TODO con smarty
+                echo $error;
+            }
+            $this->smarty->display("./templates/modificar.tpl");
         }
     }

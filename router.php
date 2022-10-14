@@ -19,7 +19,8 @@ $controladorEquipo = new ControladorEquipo();
 $controladorGrupo = new ControladorGrupo();
 $controladorUsuario = new ControladorUsuario();
 $controladorHome = new ControladorHome();
-
+var_dump($_SESSION);
+var_dump($params);
 switch($params[0]){
     case "equipos":{ 
            
@@ -33,13 +34,19 @@ switch($params[0]){
                     break;
                 }  
                 case "modificar":{
-                    if(!empty($_POST)){
-                        $controladorEquipo->modificarEquipo();
+                    if(isset($params[2]) and !empty($params[2])){
+                        $controladorEquipo->modificarEquipo($params[2]);
+                    }else{
+                        $controladorHome->redireccionarHome();
                     }
                     break;
                 }
                 case "eliminar":{
-                    $controladorEquipo->eliminarEquipoController($params[2]); 
+                    if(isset($params[2]) and !empty($params[2])){
+                        $controladorEquipo->eliminarEquipoController($params[2]); 
+                    }else{
+                        $controladorHome->redireccionarHome();
+                    }
                     break;
                 }
                 default:{

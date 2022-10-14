@@ -1,9 +1,11 @@
 <?php 
     class ControladorSesion{
 
-        public function iniciarSesion($admin){
-            session_start();
-            $_SESSION["admin"] = $admin;
+        public function iniciarSesion($usuario){
+            if (session_status() != PHP_SESSION_ACTIVE){
+                session_start();
+            }
+            $_SESSION["admin"] = $usuario->administrador;
             $_SESSION["logueado"] = true;
         }
         public function usuarioLogueado(){
@@ -17,7 +19,6 @@
             }
         }
         public function cerrarSesion(){
-            session_start();
             session_destroy();
         }
         public function esAdmin(){

@@ -7,14 +7,11 @@ class ModeloUsuario{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_catar;charset=utf8', 'root', '');
     }
 
-    public function listaUsuariosDB(){
-        $sentencia=$this->db->prepare("SELECT email FROM usuarios");
-        $sentencia->execute();
-        return $usuariosDB = $sentencia->fetch(PDO::FETCH_OBJ);
-    }
     public function registrarUsuario($nuevoUsuario){
         $sentencia=$this->db->prepare("INSERT INTO usuarios(email,contrasenia,administrador) VALUES (:email,:contrasenia,:administrador)");               //necesita los dos puntos?   :email,:contrasenia
-        return $sentencia->execute($nuevoUsuario);
+        $sentencia->execute($nuevoUsuario);
+        return $this->obtenerUsuario($nuevoUsuario[":email"]);
+        
 
     }
     public function obtenerUsuario($email = null){

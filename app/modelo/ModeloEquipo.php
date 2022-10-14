@@ -13,7 +13,7 @@
                 $sentencia->execute([$id]);
                 return $sentencia->fetch(PDO::FETCH_OBJ);
             }
-            $sentencia = $this->db->prepare("SELECT * FROM equipos");
+            $sentencia = $this->db->prepare("SELECT id_equipo,pais,puntos,pj,pg,pe,pp,gf,gc,dif,nombre as grupo FROM (equipos INNER JOIN grupos) WHERE equipos.fk_id_grupo = grupos.id_grupo");
             $sentencia->execute();
             return $sentencia->fetchALL(PDO::FETCH_OBJ);
         }

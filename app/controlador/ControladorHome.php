@@ -14,6 +14,6 @@ class ControladorHome{
         $this->vista->mostrarHome();
     }
     public function redireccionarHome(){
-        
+        header("Location: ".BASE_URL."home");
     }
 }

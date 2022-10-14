@@ -6,9 +6,6 @@
     <table>
         <thead>
             <tr>
-                {if $admin}
-                    <th>ID</th>
-                {/if}
                 <th>Pais</th>
                 <th>Puntos</th>
                 <th>PJ</th>
@@ -23,10 +20,8 @@
         <tbody>
             <tr>
                 {foreach from=$equipo item=$dato key=$clave}
-                    {if $clave!="fk_id_grupo"}
-                        {if $clave !="id_equipo" or $admin}
-                            <td>{$dato}</td> 
-                         {/if}
+                    {if $clave!="fk_id_grupo" and $clave !="id_equipo"}
+                            <td>{$dato}</td>
                     {/if}
                 {/foreach}
 

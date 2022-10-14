@@ -1,3 +1,4 @@
+{include file="header.tpl"}
 <form action="" method="post" id="formEquipo">
 
         <label for="pais">Pais</label>
@@ -35,5 +36,6 @@
                 
         </select>
 
-        <button id="btnAgregar">Agregar Equipo</button>
+        <button>Modificar</button>
 </form>
+{include file="footer.tpl"}

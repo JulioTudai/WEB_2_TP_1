@@ -102,32 +102,47 @@
             
         }
 
-        public function modificarEquipo(){
-           if($this->verificarDatosEquipo()){
-               if($this->controladorGrupo->obtenerGrupo($_POST["grupo"])){
-                   $equipo = array(
-                   ":id_equipo"=>$_POST["id_equipo"],
-                   ":pp" => $_POST["pp"],
-                   ":puntos" => $_POST["puntos"],
-                   ":pj" => $_POST["pj"],
-                   ":pe" => $_POST["pe"],
-                   ":pais" => $_POST["pais"],
-                   ":gc" => $_POST["gc"],
-                   ":fk_id_grupo" => $_POST["grupo"],
-                   ":pg" => $_POST["pg"],
-                   ":dif" => $_POST["dif"],
-                   ":gf" => $_POST["gf"],
-                   );
-                   if($this->modelo->modificarEquipo($equipo)){
-                       echo "equipo modificado";
-                   }else{
-                       echo "no existe ese equipo";
-                   }
-               }else{
-                   echo "este grupo no existe";
-               }
-           }
+        public function modificarEquipo($idEquipo){
+            if($this->controladorSesion->esAdmin()){
+                $error = null;
+                if(!empty($_POST)){
+                    if($this->verificarDatosEquipo()){
+                        if($this->controladorGrupo->obtenerGrupo($_POST["grupo"])){
+                            $equipo = array(
+                            ":id_equipo"=>$idEquipo,
+                            ":pp" => $_POST["pp"],
+                            ":puntos" => $_POST["puntos"],
+                            ":pj" => $_POST["pj"],
+                            ":pe" => $_POST["pe"],
+                            ":pais" => $_POST["pais"],
+                            ":gc" => $_POST["gc"],
+                            ":fk_id_grupo" => $_POST["grupo"],
+                            ":pg" => $_POST["pg"],
+                            ":dif" => $_POST["dif"],
+                            ":gf" => $_POST["gf"],
+                            );
+        
+                            if($this->modelo->modificarEquipo($equipo)){
+                                header("Location: ". BASE_URL. "equipos");
+                            }else{
+                                $error= "error generico";
+                            }
+                        }else{
+                            $error= "este grupo no existe";
+                        }
+                    }else{
+                        $error="formulario incorrecto";
+                    }
+                }
+                $grupos = $this->modeloGrupo->obtenerGrupo();
+                $this->vista->imprimirFormulario($error,$grupos);
+
+            }else{
+                header("Location: ". BASE_URL. "equipos");
+            }
+            
         }
+
         private function verificarDatosEquipo(){
                 return (
                     isset($_POST["pp"]) and !empty($_POST["pp"]) and is_numeric($_POST["pp"]) and
