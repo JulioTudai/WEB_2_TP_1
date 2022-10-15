@@ -36,14 +36,6 @@
             $this->smarty->display("./templates/mostrarEquipo.tpl");
         }
 
-        public function equipoNoEncontrado(){
-            echo "el equipo con esa id no existe";
-        }
-
-        public function idEquipoNoValido(){
-            echo "no se ingreso un id valido";
-        }
-
         public function listarEquipos($equipos,$admin,$grupos){
             $this->smarty->assign("equipos",$equipos);
             $this->smarty->assign("admin",$admin);
@@ -53,11 +45,11 @@
         public function mostrarEquiposGrupo($equipos,$grupo,$admin,$grupos){
             $this->smarty->assign("equipos",$equipos);
             $this->smarty->assign("grupo",$grupo);
-            $this->smarty->assign("admin",$admin);                                               // TODO preguntar hago asi para reutilizar el mostrar equipos?
+            $this->smarty->assign("admin",$admin);                
             $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/equiposGrupo.tpl");
         }
-        public function imprimirFormulario($error = null, $grupos,$equipo){
+        public function imprimirFormulario($grupos,$equipo){
 
             $this->smarty->assign("valuePais",$equipo->pais);
             $this->smarty->assign("valuePuntos",$equipo->puntos);
@@ -70,9 +62,6 @@
             $this->smarty->assign("valueDif",$equipo->dif);
 
             $this->smarty->assign("grupos",$grupos);
-            if($error){                                                                         // TODO con smarty
-                echo $error;
-            }
             $this->smarty->display("./templates/modificarEquipo.tpl");
         }
 

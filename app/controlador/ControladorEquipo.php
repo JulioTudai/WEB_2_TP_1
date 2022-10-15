@@ -31,18 +31,17 @@
 
         public function equipo($id){
             if(is_numeric($id)){
-
                 $equipo = $this->modelo->obtenerEquipos($id);
                 if($equipo){
                     $admin = $this->controladorSesion->esAdmin();
                     $grupos = $this->modeloGrupo->obtenerGrupo();
                     $this->vista->mostrarEquipo($equipo,$admin,$grupos);
                 }else{
-                    $this->vista->equipoNoEncontrado();
+                    $this->vista->mostrarError("El equipo no existe");
                 }
             }
             else{
-                $this->vista->idEquipoNoValido();
+                $this->vista->mostrarError("Id invalido");
             }
         }
 
@@ -82,30 +81,33 @@
                     $this->vista->mostrarError("datos no validos");
                 }
             }else{
-                $this->vista->mostrarError("permisos no validos");
+                header("Location: ". BASE_URL. "iniciarSesion");
             }
             
         }
 
 
         public function eliminarEquipoController($idEquipo){
-            if(is_numeric($idEquipo)){
-                if($this->modelo->eliminarEquipo($idEquipo)){
-                    $this->vista->mostrarError("equipo Eliminado");          
-                }
-                else{
-                    $this->vista->mostrarError("no existe ese equipo");
-                }
-            
+            if($this->controladorSesion->esAdmin()){
+                if(is_numeric($idEquipo)){
+                    if($this->modelo->eliminarEquipo($idEquipo)){
+                        $this->vista->mostrarError("equipo Eliminado");          
+                    }
+                    else{
+                        $this->vista->mostrarError("no existe ese equipo");
+                    }
+                
+                }else{
+                        $this->vista->idEquipoNoValido();
+                } 
             }else{
-                    $this->vista->idEquipoNoValido();
-            } 
+                header("Location: ". BASE_URL. "iniciarSesion");
+            }
             
         }
 
         public function modificarEquipo($idEquipo){
             if($this->controladorSesion->esAdmin()){
-                $error = null;
                 if(!empty($_POST)){
                     if($this->verificarDatosEquipo()){
                         if($this->controladorGrupo->obtenerGrupo($_POST["grupo"])){
@@ -127,18 +129,23 @@
                             header("Location: ". BASE_URL. "equipos");
                             
                         }else{
-                            $error= "este grupo no existe";
+                            $this->vista->mostrarError("este grupo no existe");
                         }
                     }else{
-                        $error="formulario incorrecto";
+                        $this->vista->mostrarError("formulario incorrecto");
                     }
                 }
                 $grupos = $this->modeloGrupo->obtenerGrupo();
                 $equipoDB= $this->modelo->obtenerEquipos($idEquipo);
-                $this->vista->imprimirFormulario($error,$grupos,$equipoDB);
+                if($equipoDB){
+                    $this->vista->imprimirFormulario($grupos,$equipoDB);
+                }
+                else{
+                    $this->vista->mostrarError("El equipo no existe");
+                }
 
             }else{
-                header("Location: ". BASE_URL. "equipos");
+                header("Location: ". BASE_URL. "iniciarSesion");
             }
             
         }

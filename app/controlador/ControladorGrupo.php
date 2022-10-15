@@ -37,7 +37,6 @@
         }
 
         public function agregarGrupo(){
-            var_dump($_POST);
             if($this->controladorSesion->esAdmin()){  
                 if($this->verificarDatosNuevoGrupo()){
                     $this->modelo->agregarGrupo($this->crearArregloGrupo());
@@ -46,11 +45,11 @@
                     $this->vista->mostrarError("datos no validos");
                 }
             }else{
-                header("Location: ".BASE_URL."grupos");
+                header("Location: ". BASE_URL. "iniciarSesion");
             }
         }
 
-        public function eliminarGrupoController($idGrupo, $borrarEquipos=null){
+        public function eliminarGrupoController($idGrupo){
             if($this->controladorSesion->esAdmin()){
                 if(is_numeric($idGrupo)){
                     if($this->sePuedeEliminar($idGrupo)){
@@ -75,7 +74,7 @@
                     $this->vista->mostrarError("Id no valido");
                 }
             }else{
-                header("Location: ".BASE_URL."grupos");
+                header("Location: ". BASE_URL. "iniciarSesion");
             }
         }
 
@@ -94,7 +93,7 @@
                             if($this->modelo->modificarGrupo($grupo)){
                                 header("Location: ". BASE_URL. "grupos");
                             }else{
-                                $this->vista->mostrarError("Error generico");
+                                $this->vista->mostrarError("Error en la base de datos");
                             }
                         }else{
                             $this->vista->mostrarError("Este grupo no existe");
@@ -102,12 +101,17 @@
                     }else{
                         $this->vista->mostrarError("Formulario incorrecto");
                     }
+                }else{
+                    $grupoDb = $this->modelo->obtenerGrupo($idGrupo);
+                    if($grupoDb){
+                        $this->vista->formularioModificarGrupo($grupoDb);
+                    }else{
+                        $this->vista->mostrarError("Este grupo no existe");
+                    }
                 }
-                $grupoDb = $this->modelo->obtenerGrupo($idGrupo);
-                $this->vista->formularioModificarGrupo($grupoDb);
 
             }else{
-                header("Location: ". BASE_URL. "grupos");
+                header("Location: ". BASE_URL. "iniciarSesion");;
             }
         }
 

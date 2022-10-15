@@ -25,10 +25,7 @@ switch($params[0]){
         if(isset($params[1]) and !empty($params[1])){         
             switch($params[1]){
                 case"agregar":{
-                   
-                    if(!empty($_POST)){
-                        $controladorEquipo->agregarEquipo();
-                    }
+                    $controladorEquipo->agregarEquipo();
                     break;
                 }  
                 case "modificar":{
@@ -86,7 +83,6 @@ switch($params[0]){
             switch($params[1]){
                 case"agregar":{
                     if(!empty($_POST)){
-                        echo"asdasdas";
                         $controladorGrupo->agregarGrupo();
                     }
                     break;
@@ -104,7 +100,7 @@ switch($params[0]){
                     break;
                 }
                 default:{
-                    echo"llego al default";
+                    $controladorHome->redireccionarHome();
                 }
             }
         }
@@ -130,9 +126,6 @@ switch($params[0]){
         break;    
     }
     default:{
-        echo "No se encontro la pagina";
+        $controladorHome->redireccionarHome();;
     } 
 }
-
-// TODO links a info de grupo o equipo especifico 
-// TODO links a equipos de grupo especifico

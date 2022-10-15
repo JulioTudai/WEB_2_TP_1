@@ -1,3 +1,3 @@
 {include file="header.tpl"}
-    {$error}
+    <p>{$error}</p>
 {include file="footer.tpl"}
