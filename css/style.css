@@ -29,41 +29,6 @@ main{
     margin: 0.5rem 0.5rem;
 }
 
-.formModificarEquipo{
-    background:linear-gradient(#FFFFFF 30%,#F9FFA4);
-    border-radius: 10px;
-    border: solid black 3px;
-    display: flex;
-    row-gap: 1rem;
-    align-items: center;
-    flex-direction: column;
-    padding: 0.5rem;
-}
-
-.formModificarEquipo > div{
-    display: flex;
-    justify-content: space-evenly;
-    column-gap: 1rem;
-}
-.divModificarEquipo{
-    z-index: 2;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#taparTodo{
-    z-index: 1;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
 .imgHamburguesa{
     object-fit:cover;
     width: 3rem;
@@ -108,17 +73,14 @@ h3{
     font-size: 1.8rem;
     margin-bottom: 1rem;
 }
-.sedes{
-    letter-spacing: 0.2rem;
-    color: darkred;
-    font-family: 'tapestry',cursive;
-}
+
 .botonMenu{
     height: 100%;
     grid-area: botonMenu;
     background-color: transparent;
     border: none;
 }
+
 nav{
     grid-area: nav;
 }
@@ -131,6 +93,12 @@ li{
     text-align: center;
 }
 
+.pasion{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 4.5rem;
+}
+
 nav ul{
     display: flex;
     justify-content: space-around;
@@ -138,44 +106,6 @@ nav ul{
     flex-wrap: wrap;
 }
 
-.listasEquipos{
-    display: flex;
-    flex-direction: column;
-    background: rgba(121, 218, 232,0.3);
-    border-radius: 30px;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    row-gap: 1rem;
-}
-.listaPaises{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.repechaje{
-    color:darkred;   
-
-}
-.equiposRepechaje{
-    font-size: 1.5em;
-    color: darkred;
-    text-align: center;
-}
-
-#formFixture > div{
-    display: flex;
-    justify-content: space-around;
-    column-gap: 1rem;
-
-}
-#formFixture{
-    display: flex;
-    margin: 1rem 0;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;    
-}
 button, input, select{
     border: solid black 1px;
 }
@@ -188,73 +118,10 @@ button, input, select{
     width: 7rem;
 }
 
-.fixture{
-    width: 100%;
-}
-.actualizarEquipos{
-    font-size: 1.7rem;
-}
-
-.contenedorGrupos td{
+td{
     text-align: center;
 }
 
-.contenedorGrupos{
-    display: flex;
-    flex-direction: column;
-}
-
-.botonFechas{
-    width: 100%;
-    align-self: center;
-    border-radius: 0px 0px 50px 50px;
-    background:linear-gradient(#FFFFFF,#7FB5FF);
-    border-left: solid black 2px;
-    border-right: solid black 2px;
-    border-bottom: solid black 2px;
-}
-
-.contenedorEstadio{
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 0.5rem;
-}
-.nombresEstadios{
-    font-family: 'tapestry',cursive;
-    color :rgb(134, 25, 8);
-}
-.contenedorFormSubscripcion{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-grow: 1;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-
-.formSubscripcion, .formSubscripcion input, .formSubscripcion select, .formSubscripcion button{
-    font-size: 1.5rem;
-}
-.formSubscripcion > div{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.formSubscripcion label{
-    min-width: 7rem;
-}
-
-.formSubscripcion{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    background: rgba(0, 0, 0, 0.15);
-    padding: 1rem;
-    border-radius: 10px;
-}
 .linksNav{
     color: black;
     font-size: 1.2rem;
@@ -272,25 +139,7 @@ input:invalid, .incorrecto{
     border: solid red 2px;
 }
 
-.incorrecto{
-    background-color: rgba(255, 73, 73,0.5);
-}
-
-.parrafoValidacion{
-    text-align: center;
-    font-size: 2rem;
-}
-.correcto{
-    border: solid green 2px;
-    background-color: rgb(54 174 124);
-}
-
-.captcha{
-    font-size: 2.5rem;
-    width: fit-content;
-}
-
-.captcha, .inputCaptcha, .formSubscripcion button{
+button{
     align-self: center;
 }
 tr{
@@ -311,66 +160,13 @@ button{
     padding: 0.25rem;
 }
 
-.descripcionEstadio{
-    padding-top: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.contenedorFixture{
-    display: flex;
-    flex-direction: column;
-    row-gap: 2rem;
-    margin: 2rem 0;
-}
-
-.contenedorSedes{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-
-.sorteo{
-    color: darkred;
-    padding: 1.5rem;
-    font-size: 1.8rem;
-    background: rgba(180, 255, 159,0.3);
-    border-radius: 70px;
-    text-align: center;
-}
-
-.partido{
-    flex-basis: 50%;
-}
-
-.partido p{
-    text-align: center;
-}
-
-.fecha{
-    display: flex;
-}
-
-.parrafoAdvertencia{
-    display: none;
-    text-align: center;
-    font-size: 1.5rem;
-}
-.mostrarAdvertencia{
-    display: block;
-}
-
-.noMostrar{
-    display: none;
-}
-
 td div{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
-
-.fecha h4{
-    width: 100%;
+table{
+    align-self: center;
 }
 
 @media only screen and (max-width: 799px){
@@ -384,28 +180,11 @@ td div{
         margin: 0.5rem 0;
         display: block;
     }
-
-
-    .listaPaises{
-        list-style: none;
-        column-gap: 1rem;
-    }
-
-    .fecha{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-    }
-
-    .contenedorFechas{
-        background:linear-gradient(#FFFFFF 30%,#F9FFA4);
-        border-left: solid black 2px;
-        border-right: solid black 2px;
-    }
 }
     td button{
         margin: 0.2rem;
     }
+
 @media only screen and (min-width: 800px){
 
     .cuerpo{
@@ -435,16 +214,7 @@ td div{
         margin-bottom: 0.2rem;
         font-size: 2.5rem;
     }
-    .actualizarEquipos{
-        font-size: 1.7rem;
-    }
-    #formFixture{
-        font-size: 1.2rem;
-        margin: 1rem 0;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-    }
+    
     .inputNumero{
         width: 5rem;
     }  
@@ -471,59 +241,5 @@ td div{
     .contenedorLogo{
         width: 3rem;
     }
-    .contenedorSedes{
-        flex-wrap: wrap;
-        flex-direction: row;
-        column-gap: 1rem;
-    }
-
-    .parrafosInicio{
-        font-size: 1.5em;
-    }
-
-    .listasEquipos{
-        justify-content: space-evenly;
-        display: flex;
-        flex-direction: row;
-    }
-    .continentes{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .listaPaises{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .fixture{
-        flex-basis: 40%;
-        flex-shrink: 0;
-    }
-
-    .fecha{
-        font-size: 1.3rem;
-        flex-basis: 30%;
-        text-align: center;
-        flex-direction: column;
-        row-gap: 1rem;
-    }
-
-    .contenedorGrupos{
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .contenedorFechas{
-        display: flex;
-        flex-grow: 1;
-        justify-content: space-evenly;
-    }
-
-    .contenedorEstadio{
-        flex-basis: 40%;
-        flex-grow: 1;
-    }
-
    
 }

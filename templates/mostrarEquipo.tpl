@@ -1,8 +1,5 @@
 {include file="header.tpl"}
-<main>
-    {if $admin}
-        {include file="formEquipo.tpl"}
-    {/if} 
+
     <table>
         <thead>
             <tr>
@@ -31,8 +28,4 @@
             </tr>
         </tbody>
     </table>
-</main>
-{if $admin}
-    <script src="js/formEquipo.js">
-{/if}
 {include file="footer.tpl"}

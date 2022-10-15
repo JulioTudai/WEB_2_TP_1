@@ -41,4 +41,9 @@
             $equipoEliminado->execute([$id]);
             return $equipoEliminado->rowCount();
         }
+
+        public function eliminarEquiposGrupo($idGrupo){
+            $sentencia = $this->db->prepare("DELETE FROM equipos WHERE fk_id_grupo=?");
+            $sentencia->execute([$idGrupo]);
+        }
     }

@@ -29,10 +29,10 @@
                             header("Location: home");
                             
                         }else{
-                            echo "mail o contraseña no validos";
+                            $this->vista->mostrarError("mail o contraseña no validos");
                         }
                     }else{
-                        echo "formulario no valido";
+                        $this->vista->mostrarError( "formulario no valido");
                     }
                 }
                 $this->vista->mostrarLogin("Iniciar Sesion");
@@ -63,11 +63,11 @@
                             header("Location: home");
                             
                         }else{
-                            echo"el usuario ya existe";
+                            $this->vista->mostrarError("el usuario ya existe");
                         }
 
                     }else{
-                        echo "Error al crear usuario"; 
+                        $this->vista->mostrarError( "Error al crear usuario"); 
                     }
                 }
                 $this->vista->mostrarLogin("Registrarse");

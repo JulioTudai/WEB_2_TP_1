@@ -29,7 +29,7 @@
                     <li><a class="linksNav" href="grupos">Grupos</a></li>
                     {if ($logueado)}
                         <li><a class="linksNav" href="cerrarSesion">Cerrar Sesion</a></li>
-                        {else}
+                    {else}
                         <li><a class="linksNav" href="registrarse">Registrarse</a></li>
                         <li><a class="linksNav" href="iniciarSesion">Iniciar Sesion</a></li>
                     {/if}

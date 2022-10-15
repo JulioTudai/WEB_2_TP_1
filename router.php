@@ -19,8 +19,6 @@ $controladorEquipo = new ControladorEquipo();
 $controladorGrupo = new ControladorGrupo();
 $controladorUsuario = new ControladorUsuario();
 $controladorHome = new ControladorHome();
-var_dump($_SESSION);
-var_dump($params);
 switch($params[0]){
     case "equipos":{ 
            
@@ -135,3 +133,6 @@ switch($params[0]){
         echo "No se encontro la pagina";
     } 
 }
+
+// TODO links a info de grupo o equipo especifico 
+// TODO links a equipos de grupo especifico

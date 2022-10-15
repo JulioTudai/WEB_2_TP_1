@@ -1,4 +1,4 @@
-<div> 
+ 
     <table>
         <thead>
             <tr>
@@ -22,7 +22,7 @@
                         <td>{$dato}</td>
                     {/if}
                 {/foreach}
-
+                        <td><a href="equipos/{$equipo->id_equipo}">Ver detalles</a></td>
                 {if $admin}
                     <td><a href="equipos/eliminar/{$equipo->id_equipo}">Eliminar</a></td>
                     <td><a href="equipos/modificar/{$equipo->id_equipo}">Modificar</a></td>
@@ -31,7 +31,4 @@
             {/foreach}
         </tbody>
     </table>
-    {*if $admin}
-    <script src="js/formEquipo.js"></script>
-    {/if*}
-</div>
+

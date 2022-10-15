@@ -18,4 +18,9 @@
             $this->smarty->assign("boton", $boton);
             $this->smarty->display("./templates/usuario.tpl");
         }
+
+        public function mostrarError($error){
+            $this->smarty->assign("error",$error);
+            $this->smarty->display("./templates/error.tpl");
+        }
     }

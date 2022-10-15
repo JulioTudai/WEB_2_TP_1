@@ -18,12 +18,21 @@
             $this->smarty->display("./templates/grupos.tpl");
                      
         }
-        public function idGrupoNoValido(){
-            echo "no se ingreso un id valido";
+
+        public function confirmarBorrado($idGrupo){
+            $this->smarty->assign("idGrupo",$idGrupo);
+            $this->smarty->display("./templates/confirmarBorrarGrupo.tpl");
         }
 
-        public function formularioModificarGrupo(){
+        public function formularioModificarGrupo($grupo){
+            $this->smarty->assign("valueNombre",$grupo->nombre);
+            $this->smarty->assign("valueFinalizado",$grupo->finalizado);
             $this->smarty->display("./templates/modificarGrupo.tpl");
+        }
+
+        public function mostrarError($error){
+            $this->smarty->assign("error",$error);
+            $this->smarty->display("./templates/error.tpl");
         }
     }
     //crear smartys lindos para  grupos

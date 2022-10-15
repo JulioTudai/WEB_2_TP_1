@@ -22,8 +22,9 @@
         }
 
         public function modificarGrupo($grupo){
-           $sentencia =$this->db->prepare("UPDATE grupos SET nombre=:nombre,finalizado=:finalizado WHERE id_grupo=:id_grupo");
+            $sentencia =$this->db->prepare("UPDATE grupos SET nombre=:nombre,finalizado=:finalizado WHERE id_grupo=:id_grupo");
             $sentencia->execute($grupo);
+            return $sentencia->rowcount();
         }
 
         public function eliminarGrupo($id){

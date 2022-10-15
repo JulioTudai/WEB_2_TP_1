@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2022 a las 03:12:49
+-- Tiempo de generación: 15-10-2022 a las 01:59:20
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -48,11 +48,16 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`id_equipo`, `pais`, `puntos`, `pj`, `pg`, `pe`, `pp`, `gf`, `gc`, `dif`, `fk_id_grupo`) VALUES
-(2, 'arg', 1, 2, 34, 5, 56, 32, 21, 1, 1),
-(3, 'bra', 12, 45, 54, 354, 543, 123, 54, 7, 2),
-(4, 'probando', 1, 2, 3, 4, 5, 6, 7, 8, 1),
-(6, 'asd', 3, 2, 5, 6, 5, 8, 2, 4, 2),
-(7, 'vav', 24, 463, 47, 854, 435, 64, 75, 45, 1);
+(20, 'Argentina', 999, 999, 999, 999, 0, 999, 0, 999, 6),
+(23, 'Brasil', 1, 2, 13, 4, 5, 23, 4, 24, 6),
+(24, 'España', 1, 1, 1, 1, 3, 4, 1, 4, 6),
+(25, 'Qatar', 2, 3, 4, 5, 6, 8, 9, 2, 7),
+(26, 'Estados Unidos', 3, 4, 2, 5, 2, 1, 6, 8, 7),
+(27, 'Paises Bajos', 2, 5, 23, 45, 5, 25, 2, 5, 6),
+(28, 'Alemania', 7, 2, 4, 5, 2, 4, 5, 1, 11),
+(30, 'Inglaterra', 6, 32, 4, 2, 3, 4, 2, 2, 6),
+(31, '0000', 0, 0, 0, 0, 0, 0, 0, 0, 11),
+(32, 'Cenegal', 1, 3, 5, 1, 0, 1, 2, 5, 12);
 
 -- --------------------------------------------------------
 
@@ -71,8 +76,31 @@ CREATE TABLE `grupos` (
 --
 
 INSERT INTO `grupos` (`id_grupo`, `nombre`, `finalizado`) VALUES
-(1, 'G', 0),
-(2, 'A', 0);
+(6, 'A', 1),
+(7, 'B', 0),
+(11, 'D', 0),
+(12, 'C', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `email` varchar(50) NOT NULL,
+  `contrasenia` varchar(260) NOT NULL,
+  `administrador` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`email`, `contrasenia`, `administrador`) VALUES
+('admin@admin.com', '$2y$10$MVEidpxDsbTEKrwkYE75du73lr4IrAsQvDKDw1YGhD/.KfN99LJXO', 1),
+('probanding@asd.com', '$2y$10$9j7qoTXCxzQOHRi2gH/4Qe386mtpsLoz0HGVkTR7JwQ7WbZpyirN2', 0),
+('user@user.com', '$2y$10$eFcluDlPctx.M2o/ehAGF.MIX2SNrHzFYuxlic5QRmNj4Bcx6rRBm', 0);
 
 --
 -- Índices para tablas volcadas
@@ -92,6 +120,12 @@ ALTER TABLE `grupos`
   ADD PRIMARY KEY (`id_grupo`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`email`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -99,13 +133,13 @@ ALTER TABLE `grupos`
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas

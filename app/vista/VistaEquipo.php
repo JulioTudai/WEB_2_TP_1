@@ -57,11 +57,27 @@
             $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/equiposGrupo.tpl");
         }
-        public function imprimirFormulario($error = null, $grupos){
+        public function imprimirFormulario($error = null, $grupos,$equipo){
+
+            $this->smarty->assign("valuePais",$equipo->pais);
+            $this->smarty->assign("valuePuntos",$equipo->puntos);
+            $this->smarty->assign("valuePj",$equipo->pj);
+            $this->smarty->assign("valuePg",$equipo->pg);
+            $this->smarty->assign("valuePe",$equipo->pe);
+            $this->smarty->assign("valuePp",$equipo->pp);
+            $this->smarty->assign("valueGf",$equipo->gf);
+            $this->smarty->assign("valueGc",$equipo->gc);
+            $this->smarty->assign("valueDif",$equipo->dif);
+
             $this->smarty->assign("grupos",$grupos);
             if($error){                                                                         // TODO con smarty
                 echo $error;
             }
             $this->smarty->display("./templates/modificarEquipo.tpl");
+        }
+
+        public function mostrarError($error){
+            $this->smarty->assign("error",$error);
+            $this->smarty->display("./templates/error.tpl");
         }
     }
