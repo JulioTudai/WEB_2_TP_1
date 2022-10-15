@@ -98,7 +98,7 @@
                     }
                 
                 }else{
-                        $this->vista->idEquipoNoValido();
+                        $this->vista->mostrarError("Id de equipo no valido");
                 } 
             }else{
                 header("Location: ". BASE_URL. "iniciarSesion");
