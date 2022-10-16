@@ -15,6 +15,13 @@
         }
 
         public function mostrarLogin($boton){
+            $this->smarty->assign("titulo","Iniciar Sesion");
+            $this->smarty->assign("boton", $boton);
+            $this->smarty->display("./templates/usuario.tpl");
+        }
+
+        public function mostrarRegistro($boton){
+            $this->smarty->assign("titulo","Registro");
             $this->smarty->assign("boton", $boton);
             $this->smarty->display("./templates/usuario.tpl");
         }

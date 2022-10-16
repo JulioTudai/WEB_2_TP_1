@@ -13,6 +13,7 @@
             $this->smarty->assign("BASE_URL", BASE_URL); //o algo asi
         }
         public function mostrarGrupos($grupos,$admin){
+            $this->smarty->assign("titulo","Grupos");
             $this->smarty->assign("grupos",$grupos);
             $this->smarty->assign("admin",$admin);
             $this->smarty->display("./templates/grupos.tpl");
@@ -20,17 +21,20 @@
         }
 
         public function confirmarBorrado($idGrupo){
+            $this->smarty->assign("titulo","Confirmar Borrado");
             $this->smarty->assign("idGrupo",$idGrupo);
             $this->smarty->display("./templates/confirmarBorrarGrupo.tpl");
         }
 
         public function formularioModificarGrupo($grupo){
+            $this->smarty->assign("titulo","Modificar Grupo");
             $this->smarty->assign("valueNombre",$grupo->nombre);
             $this->smarty->assign("valueFinalizado",$grupo->finalizado);
             $this->smarty->display("./templates/modificarGrupo.tpl");
         }
 
         public function mostrarError($error){
+            $this->smarty->assign("titulo","Error");
             $this->smarty->assign("error",$error);
             $this->smarty->display("./templates/error.tpl");
         }

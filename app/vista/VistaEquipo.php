@@ -13,21 +13,6 @@
             $this->smarty->assign("BASE_URL", BASE_URL); //o algo asi
         }
 
-
-        private function crearArregloParaMostrar($equipo){
-            return array(
-                "pais" => $equipo->pais,
-                "puntos" => $equipo->puntos,
-                "pg" => $equipo->pg,
-                "pj" => $equipo->pj,
-                "pe" => $equipo->pe,
-                "pp" => $equipo->pp,
-                "gf" => $equipo->gf,
-                "gc" => $equipo->gc,
-                "dif" => $equipo->dif,
-            );
-        }
-
         public function mostrarEquipo($equipo, $admin, $grupos){                                                                      
             $this->smarty->assign("titulo",$equipo->pais);
             $this->smarty->assign("admin",$admin);
@@ -37,12 +22,14 @@
         }
 
         public function listarEquipos($equipos,$admin,$grupos){
+            $this->smarty->assign("titulo","equipos");
             $this->smarty->assign("equipos",$equipos);
             $this->smarty->assign("admin",$admin);
             $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/equipos.tpl");
         }
         public function mostrarEquiposGrupo($equipos,$grupo,$admin,$grupos){
+            $this->smarty->assign("titulo","Equipos de grupo ".$grupo);
             $this->smarty->assign("equipos",$equipos);
             $this->smarty->assign("grupo",$grupo);
             $this->smarty->assign("admin",$admin);                
@@ -51,6 +38,7 @@
         }
         public function imprimirFormulario($grupos,$equipo){
 
+            $this->smarty->assign("titulo","Modificar equipo");
             $this->smarty->assign("valuePais",$equipo->pais);
             $this->smarty->assign("valuePuntos",$equipo->puntos);
             $this->smarty->assign("valuePj",$equipo->pj);
@@ -60,12 +48,13 @@
             $this->smarty->assign("valueGf",$equipo->gf);
             $this->smarty->assign("valueGc",$equipo->gc);
             $this->smarty->assign("valueDif",$equipo->dif);
-
+            $this->smarty->assign("valueGrupo",$equipo->grupo);
             $this->smarty->assign("grupos",$grupos);
             $this->smarty->display("./templates/modificarEquipo.tpl");
         }
 
         public function mostrarError($error){
+            $this->smarty->assign("titulo", "Error");
             $this->smarty->assign("error",$error);
             $this->smarty->display("./templates/error.tpl");
         }

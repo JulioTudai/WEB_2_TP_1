@@ -1,3 +1,4 @@
+{$titulo="Inicio"}
 {include file="header.tpl"}
 
 <h2 class="pasion"> ¡¡¡¡¡¡¡SENTI LA PASION!!!!!!!!!!</h2>

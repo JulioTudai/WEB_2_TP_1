@@ -12,6 +12,7 @@
                 <th>GF</th>
                 <th>GC</th>
                 <th>DIF</th>
+                <th>Grupo</th>
             </tr>
         </thead>
         <tbody>

@@ -9,7 +9,7 @@
    
         public function obtenerEquipos($id = null){
             if (isset($id)){
-                $sentencia = $this->db->prepare("SELECT * FROM equipos WHERE id_equipo = ?");
+                $sentencia = $this->db->prepare("SELECT id_equipo,pais,puntos,pj,pg,pe,pp,gf,gc,dif,nombre as grupo FROM (equipos INNER JOIN grupos) WHERE id_equipo = ? and (fk_id_grupo = id_grupo)");
                 $sentencia->execute([$id]);
                 return $sentencia->fetch(PDO::FETCH_OBJ);
             }
@@ -20,7 +20,7 @@
 
         public function obtenerEquiposGrupo($grupo){
 
-            $sentencia = $this->db->prepare("SELECT pais,puntos,pj,pg,pe,pp,gf,gc,dif,nombre as grupo FROM (equipos INNER JOIN grupos) WHERE equipos.fk_id_grupo = grupos.id_grupo AND grupos.id_grupo = ?");
+            $sentencia = $this->db->prepare("SELECT id_equipo,pais,puntos,pj,pg,pe,pp,gf,gc,dif,nombre as grupo FROM (equipos INNER JOIN grupos) WHERE equipos.fk_id_grupo = grupos.id_grupo AND grupos.id_grupo = ?");
             $sentencia->execute([$grupo]);
             return $sentencia->fetchALL(PDO::FETCH_OBJ);
         }

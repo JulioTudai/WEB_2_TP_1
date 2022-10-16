@@ -70,7 +70,7 @@
                         $this->vista->mostrarError( "Error al crear usuario"); 
                     }
                 }
-                $this->vista->mostrarLogin("Registrarse");
+                $this->vista->mostrarRegistro("Registrarse");
             }else{
                 header('Location: home');
             }  

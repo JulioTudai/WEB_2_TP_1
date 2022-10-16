@@ -5,8 +5,7 @@
     require_once "./app/controlador/ControladorGrupo.php";
     require_once "./app/controlador/controladorSesion.php";
     require_once "./app/modelo/ModeloGrupo.php";
-    require_once "./app/controlador/ControladorHome.php";
-    
+
     class ControladorEquipo{
         private $modelo;
         private $vista;

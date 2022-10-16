@@ -5,7 +5,7 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 require_once "./app/controlador/ControladorEquipo.php";
 require_once "./app/controlador/ControladorGrupo.php";
 require_once "./app/controlador/ControladorUsuario.php";
-require_once "./app/controlador/ControladorHome.php";
+require_once "./app/vista/VistaHome.php";
 
 if(!empty($_GET["action"])){
     $action = $_GET["action"];
@@ -18,7 +18,8 @@ $params = explode("/" , $action);
 $controladorEquipo = new ControladorEquipo();
 $controladorGrupo = new ControladorGrupo();
 $controladorUsuario = new ControladorUsuario();
-$controladorHome = new ControladorHome();
+$vistaHome = new VistaHome();
+
 switch($params[0]){
     case "equipos":{ 
            
@@ -32,7 +33,7 @@ switch($params[0]){
                     if(isset($params[2]) and !empty($params[2])){
                         $controladorEquipo->modificarEquipo($params[2]);
                     }else{
-                        $controladorHome->redireccionarHome();
+                        header("Location: ".BASE_URL."home");
                     }
                     break;
                 }
@@ -40,7 +41,7 @@ switch($params[0]){
                     if(isset($params[2]) and !empty($params[2])){
                         $controladorEquipo->eliminarEquipoController($params[2]); 
                     }else{
-                        $controladorHome->redireccionarHome();
+                        header("Location: ".BASE_URL."home");
                     }
                     break;
                 }
@@ -91,7 +92,7 @@ switch($params[0]){
                     if(isset($params[2]) and !empty($params[2])){
                         $controladorGrupo->modificarGrupo($params[2]);
                     }else{
-                        $controladorHome->redireccionarHome();
+                        header("Location: ".BASE_URL."home");
                     }
                     break;
                 }
@@ -100,7 +101,7 @@ switch($params[0]){
                     break;
                 }
                 default:{
-                    $controladorHome->redireccionarHome();
+                    header("Location: ".BASE_URL."home");
                 }
             }
         }
@@ -121,11 +122,8 @@ switch($params[0]){
         $controladorUsuario->registrarse();
         break;
     }
-    case "home":{
-        $controladorHome->llamarHome();
+    default:{
+        $vistaHome->mostrarHome();
         break;    
     }
-    default:{
-        $controladorHome->redireccionarHome();;
-    } 
 }

@@ -31,7 +31,7 @@
         <label for="grupo"></label>
         <select name="grupo" id="grupo" required>
                 {foreach from=$grupos item=$grupo}
-                        <option value= "{$grupo->id_grupo}">Grupo {$grupo->nombre}</option>
+                <option value="{$grupo->id_grupo}" {if ($grupo->nombre == $valueGrupo)} selected {else} asd {/if}>Grupo {$grupo->nombre}</option>
                 {/foreach}
                 
         </select>
