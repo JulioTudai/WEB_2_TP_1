@@ -27,6 +27,7 @@
         }
 
         public function mostrarError($error){
+            $this->smarty->assign("titulo", "ERROR");
             $this->smarty->assign("error",$error);
             $this->smarty->display("./templates/error.tpl");
         }
